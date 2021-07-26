@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>Home</title>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="../static/assets/css/bootstrap.min.css">
+    <!-- Icon -->
+    <link rel="stylesheet" href="../static/assets/fonts/line-icons.css">
+    <!-- Animate -->
+    <link rel="stylesheet" href="../static/assets/css/animate.css">
+    <!-- Main Style -->
+    <link rel="stylesheet" href="../static/assets/css/main.css">
+
+</head>
+<body>
+
+<!-- Header Area wrapper Starts -->
+<header id="header-wrap">
+    <!-- Navbar Start -->
+    <nav class="navbar navbar-expand-md bg-inverse fixed-top scrolling-navbar">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <a href="/index" class="navbar-brand" style="margin:1% 0 1% 5%"><img
+                    src="../static/assets/img/logo.png"></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
+                    aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                <i class="lni-menu"></i>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <ul class="navbar-nav mr-auto w-100 justify-content-end clearfix" style="font-size: 20px;">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="/index">
+                            主页
+                        </a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#intro">
+                            图书简介
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#services">
+                            实验列表
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- Navbar End -->
+
+    <!-- Hero Area Start -->
+    <div id="hero-area" class="hero-area-bg" style="height: 1000px">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 col-sm-12">
+                    <div class="contents text-center">
+                        <p class="head-title wow fadeInUp">人工智能通识教程</p>
+                        <p class="head-sub-title wow fadeInUp">——王万良 编著</p>
+                        <div class="wow fadeInUp" data-wow-delay="0.3s">
+                            <a href="#services" class="btn btn-common">进入</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Hero Area End -->
+
+</header>
+<!-- Header Area wrapper End -->
+<div id="intro" class="skill-area section-padding">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 col-md-12 col-xs-12 wow fadeInLeft" data-wow-delay="0.3s">
+                <img class="img-fluid" src="../static/assets/img/book.jpg" alt="">
+            </div>
+            <div class="col-lg-6 col-md-12 col-xs-12 info wow fadeInRight" data-wow-delay="0.3s">
+                <div class="site-heading">
+                    <h2 class="section-title"><span>图书简介</span></h2>
+                    <p style="font-size: 20px">
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;本书由国家教学名师，教育部计算机类专业教学指导委员会委员、浙江省高等学校计算机类专业教学指导委员会副主任，人工智能领域有名作者王万良编写，由他编写的《人工智能》专业教材，被靠前众多高校用作教材。为适应人工智能的发展，满足非计算机专业，尤其是人文社科专业的读者学习人工智能知识，特编写本书，以简明扼要的语言，向非计算机专业学生介绍人工智能的相关知识，本书不需要读者具有任何相关知识，就可以了解人工智能的概念、应用前景等内容，可以作为非计算机专业学生的通识教程。
+                    </p>
+                </div>
+                <br>
+                <div class="site-heading">
+                    <h2 class="section-title"><span>作者简介：</span></h2>
+                    <p style="font-size: 20px">
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;王万良教授，国家教学名师，国家万人计划领军人才，享受国务院政府特殊津贴专家，浙江省杰出教师，教育部计算机类专业教学指导委员会委员、浙江省高等学校计算机类专业教学指导委员会副主任。
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Services Section Start -->
+<section id="services" class="section-padding bg-gray">
+    <div class="container" style="max-width: 80%;">
+        <div class="section-header text-center">
+            <h2 class="section-title wow fadeInDown" data-wow-delay="0.3s">实验内容展示</h2>
+        </div>
+        <div class="row">
+            <!-- Services item -->
+            <div class="col-md-6 col-lg-4 col-xs-12">
+                <div class="services-item wow fadeInRight" data-wow-delay="0.1s">
+                    <div class="icon">
+                        <i class="lni-pencil"></i>
+                    </div>
+                    <div class="services-content">
+                        <h3><a href="/exp_one">实验 一 ||<span style="color: red"> 产生式系统实验</span></a></h3>
+                        <p>设计并编程实现一个小型产生式系统（如分类、诊断等类型）。</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Services item -->
+            <div class="col-md-6 col-lg-4 col-xs-12">
+                <div class="services-item wow fadeInRight" data-wow-delay="0.1s">
+                    <div class="icon">
+                        <i class="lni-pencil"></i>
+                    </div>
+                    <div class="services-content">
+                        <h3><a href="/exp_two">实验 二 ||<span style="color: red"> 洗衣机模糊推理系统实验</span></a></h3>
+                        <p>采用python设计洗衣机洗涤时间的模糊控制</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Services item -->
+            <div class="col-md-6 col-lg-4 col-xs-12">
+                <div class="services-item wow fadeInRight" data-wow-delay="0.1s">
+                    <div class="icon">
+                        <i class="lni-pencil"></i>
+                    </div>
+                    <div class="services-content">
+                        <h3><a href="/exp_three">实验 三 ||<span style="color: red"> A*算法求解八数码问题</span></a></h3>
+                        <p>以8数码问题为例实现A*算法求解程序，设计两种不同的估价函数</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Services item -->
+            <div class="col-md-6 col-lg-4 col-xs-12">
+                <div class="services-item wow fadeInRight" data-wow-delay="0.1s">
+                    <div class="icon">
+                        <i class="lni-pencil"></i>
+                    </div>
+                    <div class="services-content">
+                        <h3><a href="/exp_four">实验 四 ||<span style="color: red"> A*算法求解迷宫寻路问题实验</span></a></h3>
+                        <p>熟悉和掌握A*算法实现迷宫寻路功能，要求掌握启发式函数的编写以及各类启发式函数效果的比较</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Services item -->
+            <div class="col-md-6 col-lg-4 col-xs-12">
+                <div class="services-item wow fadeInRight" data-wow-delay="0.1s">
+                    <div class="icon">
+                        <i class="lni-pencil"></i>
+                    </div>
+                    <div class="services-content">
+                        <h3><a href="/exp_five">实验 五 ||<span style="color: red"> 遗传算法求函数最大值实验</span></a></h3>
+                        <p>熟悉和掌握遗传算法的原理、流程和编码策略，并利用遗传算法求解函数优化问题，理解求解流程并测试主要参数对结果的影响</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4 col-xs-12">
+                <div class="services-item wow fadeInRight" data-wow-delay="0.1s">
+                    <div class="icon">
+                        <i class="lni-pencil"></i>
+                    </div>
+                    <div class="services-content">
+                        <h3><a href="/exp_six">实验 六 ||<span style="color: red"> 遗传算法求TSP问题实验</span></a></h3>
+                        <p>熟悉和掌握遗传算法的原理、流程和编码策略，理解求解TSP问题的流程并测试主要参数对结果的影响，掌握遗传算法的基本实现方法</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4 col-xs-12">
+                <div class="services-item wow fadeInRight" data-wow-delay="0.1s">
+                    <div class="icon">
+                        <i class="lni-pencil"></i>
+                    </div>
+                    <div class="services-content">
+                        <h3><a href="/exp_twenteen">实验 七 ||<span style="color: red"> 蚁群算法求解最短路径实验</span></a></h3>
+                        <p>熟悉和掌握蚁群算法的原理、流程和算法模型，并利用蚁群算法求解最短路径问题，理解求解流程并测试主要参数对结果的影响</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4 col-xs-12">
+                <div class="services-item wow fadeInRight" data-wow-delay="0.1s">
+                    <div class="icon">
+                        <i class="lni-pencil"></i>
+                    </div>
+                    <div class="services-content">
+                        <h3><a href="/exp_thirteen">实验 八 ||<span style="color: red"> 量子粒子群算法求函数最优解</span></a></h3>
+                        <p>熟悉和掌握量子粒子群的概念及流程，并利用量子粒子群算法求最优解</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4 col-xs-12">
+                <div class="services-item wow fadeInRight" data-wow-delay="0.1s">
+                    <div class="icon">
+                        <i class="lni-pencil"></i>
+                    </div>
+                    <div class="services-content">
+                        <h3><a href="/exp_fourteen">实验 九 ||<span style="color: red"> 量子进化算法求函数最优解</span></a></h3>
+                        <p>熟悉和掌握量子位和量子进化的基本概念，并利用量子进化算法求最优解</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4 col-xs-12">
+                <div class="services-item wow fadeInRight" data-wow-delay="0.1s">
+                    <div class="icon">
+                        <i class="lni-pencil"></i>
+                    </div>
+                    <div class="services-content">
+                        <h3><a href="/exp_fifteen">实验 十 ||<span style="color: red"> 粒子群算法求函数最小值实验</span></a></h3>
+                        <p>熟悉和掌握粒子群算法的原理、流程，并利用粒子群算法求解函数优化问题，理解求解流程并测试主要参数对实验结果的影响</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4 col-xs-12">
+                <div class="services-item wow fadeInRight" data-wow-delay="0.1s">
+                    <div class="icon">
+                        <i class="lni-pencil"></i>
+                    </div>
+                    <div class="services-content">
+                        <h3><a href="/exp_eight">实验 十一 ||<span style="color: red"> 基于神经网络的优化计算问题</span></a></h3>
+                        <p>掌握连续Hopfield神经网络的结构和运行机制，掌握连续Hopfield神经网络用于优化计算的一般步骤</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4 col-xs-12">
+                <div class="services-item wow fadeInRight" data-wow-delay="0.1s">
+                    <div class="icon">
+                        <i class="lni-pencil"></i>
+                    </div>
+                    <div class="services-content">
+                        <h3><a href="/exp_seven">实验 十二 ||<span style="color: red"> BP神经网络分类MINST数据集</span></a></h3>
+                        <p>熟悉掌握BP神经网络的定义，并利用BP神经网络对MINST数据集进行分类</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4 col-xs-12">
+                <div class="services-item wow fadeInRight" data-wow-delay="0.1s">
+                    <div class="icon">
+                        <i class="lni-pencil"></i>
+                    </div>
+                    <div class="services-content">
+                        <h3><a href="/exp_nine">实验 十三 ||<span style="color: red"> 采用卷积神经网络分类MINST数据集</span></a></h3>
+                        <p>熟悉掌握卷积神经网络的定义，了解网络中卷积层、池化层等各层特点，并利用卷积神经网络对MINST数据集进行分类</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4 col-xs-12">
+                <div class="services-item wow fadeInRight" data-wow-delay="0.1s">
+                    <div class="icon">
+                        <i class="lni-pencil"></i>
+                    </div>
+                    <div class="services-content">
+                        <h3><a href="#">实验 十四 ||<span style="color: red"> 采用胶囊网络分类MINST数据集</span></a></h3>
+                        <p>熟悉掌握胶囊网络的定义，了解网络中胶囊、动态路由等特点，并利用胶囊神经网络对MINST数据集进行分类</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4 col-xs-12">
+                <div class="services-item wow fadeInRight" data-wow-delay="0.1s">
+                    <div class="icon">
+                        <i class="lni-pencil"></i>
+                    </div>
+                    <div class="services-content">
+                        <h3><a href="#">实验 十五 ||<span style="color: red"> 扩展生成对抗网络生成数字图像实验</span></a></h3>
+                        <p>熟悉和掌握生成对抗网络的定义、生成器和判别器，并利用扩展生成对抗网络生成数字图像。理解网络模型的对抗过程</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Services Section End -->
+
+<hr/>
+<!-- Copyright Section Start -->
+<div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4 col-md-3 col-xs-12">
+                <div class="footer-logo">
+                    <img src="../static/assets/img/img_07.gif" alt="">
+                </div>
+            </div>
+            <div class="col-lg-8 col-md-5 col-xs-12">
+                <p class="float-left">浙江省杭州市下城区潮王路18号 | 邮编 310014 | 查号台 0571-88320114
+                    版权所有 © 浙江工业大学</p>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Copyright Section End -->
+
+<!-- Go to Top Link -->
+<a href="#" class="back-to-top">
+    <i class="lni-arrow-up"></i>
+</a>
+
+<!-- Preloader -->
+<div id="preloader">
+    <div class="loader" id="loader-1"></div>
+</div>
+<!-- End Preloader -->
+
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="../static/assets/js/jquery-min.js"></script>
+<script src="../static/assets/js/popper.min.js"></script>
+<script src="../static/assets/js/bootstrap.min.js"></script>
+<script src="../static/assets/js/owl.carousel.min.js"></script>
+<script src="../static/assets/js/jquery.mixitup.js"></script>
+<script src="../static/assets/js/wow.js"></script>
+<script src="../static/assets/js/jquery.nav.js"></script>
+<script src="../static/assets/js/scrolling-nav.js"></script>
+<script src="../static/assets/js/jquery.easing.min.js"></script>
+<script src="../static/assets/js/jquery.counterup.min.js"></script>
+<script src="../static/assets/js/jquery.magnific-popup.min.js"></script>
+<script src="../static/assets/js/jquery.slicknav.js"></script>
+<script src="../static/assets/js/main.js"></script>
+
+
+</body>
+</html>

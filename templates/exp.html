@@ -1,0 +1,805 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>{{ id }}{{ title }}</title>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="../static/assets/css/bootstrap.min.css">
+    <!-- Icon -->
+    <link rel="stylesheet" href="../static/assets/fonts/line-icons.css">
+    <!-- Main Style -->
+    <link rel="stylesheet" href="../static/assets/css/main.css">
+    <link href="http://cdn.bootcss.com/highlight.js/8.0/styles/github.min.css" rel="stylesheet">
+    <style>
+        .post-content p {
+            font-size: 20px;
+            white-space: pre-wrap;
+        }
+
+        span {
+            font-weight: bold;
+            color: #0b0b0b;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Header Section Start -->
+<header>
+    <!-- Navbar Start -->
+    <nav class="navbar navbar-expand-md bg-inverse fixed-top scrolling-navbar">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <a href="/index" class="navbar-brand" style="margin:1% 0 1% 5%"><img src="../static/assets/img/logo.png"
+                                                                                 alt=""></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
+                    aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                <i class="lni-menu"></i>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <ul class="navbar-nav mr-auto w-100 justify-content-end clearfix" style="font-size: 20px;">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="/index">
+                            主页
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/index#intro">
+                            图书简介
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/index#services">
+                            实验列表
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- Navbar End -->
+</header>
+<!-- Header Section End -->
+
+<!-- Page header Start -->
+<section class="page-header">
+    <div class="container">
+        <div class="row justify-content-md-center">
+            <div class="col-md-12">
+                <div class="breadcrumb-wrapper text-center">
+                    <p style="font-size: 50px">{{ title }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Page header End -->
+
+<!-- Blog Section Start  -->
+<div id="blog-single">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-xs-12">
+                <div class="blog-post">
+                    <div class="post-content">
+                        <h3>一、实验目的</h3>
+                        <p>{{ aim }}</p>
+                        <br>
+                        <h3>二、实验内容</h3>
+                        <p>{{ content }}</p>
+                        <br>
+                        <h3>三、实验要求</h3>
+                        <p>{{ exp_request }}</p>
+                        <br>
+                        <h3>四、实验报告要求</h3>
+                        <p>{{ exp_report }}</p>
+                    </div>
+                </div>
+                <div class="blog-post">
+                    <div class="post-content">
+                        <h3>在线演示</h3>
+                        {% if id == '实验-1' %}
+                            <div>
+                                <p style="font-size: 15px">输入对应条件前面的数字:</p>
+                                <p style="font-size: 15px">*******************************************************</p>
+                                <p style="font-size: 15px;margin-left: 6%">*1:有毛发 2:产奶 3:有羽毛 4:不会飞 5:会下蛋 *</p>
+                                <p style="font-size: 15px;margin-left: 6%">*6:吃肉 7:有犬齿 8:有爪 9:眼盯前方 10:有蹄 *</p>
+                                <p style="font-size: 15px;margin-left: 6%">*11:反刍 12:黄褐色 13:有斑点 14:有黑色条纹 15:长脖 *</p>
+                                <p style="font-size: 15px;margin-left: 6%">*16:长腿 17:不会飞 18:会游泳 19:黑白二色 20:善飞 *</p>
+                                <p style="font-size: 15px;margin-left: 6%">*21：哺乳类 22:鸟类 23:食肉类 24：蹄类 *</p>
+                                <p style="font-size: 15px">*******************************************************</p>
+                            </div>
+                            <br>
+                            <form id="comment-form" action="#">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <span>数字编号：</span>
+                                            <textarea class="form-control" id="data" data-value="3,4,5,12,20,22"
+                                                      placeholder="请在此输入对应条件的数字，按逗号分隔！例如3,4,5,12,20,22"
+                                                      rows="6"></textarea>
+                                        </div>
+                                        <div class="submit-button">
+                                            <button class="btn btn-common" style="float: right;" id="submit-1"
+                                                    type="button">
+                                                提交
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        {% elif id == '实验-2' %}
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <span>污泥论域的模糊集合：</span>
+                                    <input type="text" class="form-control" id="sg" value="0.5,0.83,0.6"
+                                           placeholder="请在此输入污泥论域的模糊集合，按逗号分隔！">
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <span>油脂论域的模糊集合：</span>
+                                    <input type="text" class="form-control" id="gr" value="0.5,0.71,0.7"
+                                           placeholder="请在此输入油脂论域的模糊集合，按逗号分隔！">
+                                </div>
+                            </div>
+                            <div class="submit-button">
+                                <button class="btn btn-common" style="float: right;" id="submit-2"
+                                        type="button">
+                                    提交
+                                </button>
+                            </div>
+                        {% elif id == '实验-3' %}
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <span>初始状态：</span>
+                                    <input type="text" class="form-control" id="current"
+                                           value="[[1, 3, 6], [5, 2, 8], [4, 7, 0]]"
+                                           placeholder="请在此输入八数码初始矩阵状态，维度之间按[]分隔，元素之间按逗号分隔">
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <span>最终状态：</span>
+                                    <input type="text" class="form-control" id="target"
+                                           value="[[1, 2, 3], [4, 5, 6], [7, 8, 0]]"
+                                           placeholder="请在此输入八数码最终矩阵状态，维度之间按[]分隔，元素之间按逗号分隔">
+                                </div>
+                            </div>
+                            <div class="submit-button">
+                                <button class="btn btn-common" style="float: right;" id="submit-3"
+                                        type="button">
+                                    提交
+                                </button>
+                            </div>
+                        {% elif id == '实验-4' %}
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <span>初始状态：</span>
+                                    <input type="text" class="form-control" id="start" value="0,0"
+                                           placeholder="起始点位置">
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <span>最终状态：</span>
+                                    <input type="text" class="form-control" id="end" value="4,4"
+                                           placeholder="终点位置">
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <span>迷宫地图：</span>
+                                    <textarea class="form-control" id="map"
+                                              placeholder="请在此输入迷宫矩阵地图，维度之间按[]分隔，元素之间按逗号分隔，例如[[0, 0, 0, 0, 0], [1, 0, 1, 0, 1], [0, 0, 0, 0, 1], [0, 1, 0, 0, 0], [0, 0, 0, 1, 0]]"
+                                              rows="6"></textarea>
+                                </div>
+                            </div>
+                            <div class="submit-button">
+                                <button class="btn btn-common" style="float: right;" id="submit-4"
+                                        type="button">
+                                    提交
+                                </button>
+                            </div>
+                        {% elif id == '实验-5' %}
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <span>编码长度：</span>
+                                    <input type="text" class="form-control" value="24"
+                                           placeholder="编码长度,default=24">
+                                </div>
+                                <div class="form-group">
+                                    <span>种群大小：</span>
+                                    <input type="text" class="form-control" value="200"
+                                           placeholder="种群大小,default=200">
+                                </div>
+                                <div class="form-group">
+                                    <span>交叉率：</span>
+                                    <input type="text" class="form-control" value="0.5"
+                                           placeholder="交叉率,default=0.5">
+                                </div>
+                                <div class="form-group">
+                                    <span>变异率：</span>
+                                    <input type="text" class="form-control" value="0.015"
+                                           placeholder="变异率,default=0.015">
+                                </div>
+                                <div class="form-group">
+                                    <span>迭代次数：</span>
+                                    <input type="text" class="form-control" value="50"
+                                           placeholder="迭代次数,default=50">
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <span>函数方程：</span>
+                                    <textarea class="form-control" id="map" data-value="(6.452 * (x + 0.125 * y) * (cos(x) - cos(2 * y)) ** 2) / (
+                0.8 + (x - 4.2) ** 2 + 2 * (y - 7) ** 2) + 3.226 * y"
+                                              placeholder="默认函数为： (6.452 * (x + 0.125 * y) * (cos(x) - cos(2 * y)) ** 2) / (0.8 + (x - 4.2) ** 2 + 2 * (y - 7) ** 2) + 3.226 * y"
+                                              rows="6"></textarea>
+                                </div>
+                            </div>
+                            <div class="submit-button">
+                                <button class="btn btn-common" style="float: right;" id="submit-5"
+                                        type="button">
+                                    提交
+                                </button>
+                            </div>
+                        {% elif id == '实验-6' %}
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <span>种群个体数量：</span>
+                                    <input type="text" class="form-control" value="200"
+                                           placeholder="种群个体数量,default=200">
+                                </div>
+                                <div class="form-group">
+                                    <span>种群大小：</span>
+                                    <input type="text" class="form-control" value="1000"
+                                           placeholder="种群大小,default=1000">
+                                </div>
+                                <div class="form-group">
+                                    <span>变异率：</span>
+                                    <input type="text" class="form-control" value="0.1"
+                                           placeholder="变异率,default=0.1">
+                                </div>
+                                <div class="form-group">
+                                    <span>交叉率：</span>
+                                    <input type="text" class="form-control" value="0.015"
+                                           placeholder="交叉率,default=0.015">
+                                </div>
+                            </div>
+                            <div class="submit-button">
+                                <button class="btn btn-common" style="float: right;" id="submit-6"
+                                        type="button">
+                                    提交
+                                </button>
+                            </div>
+                        {% elif id == '实验-7' %}
+                        {% elif id == '实验-8' %}
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <span>定义城市坐标：</span>
+                                    <textarea class="form-control" id="map"
+                                              placeholder="默认坐标群为： [[2, 6], [2, 4], [1, 3], [4, 6], [5, 5], [4, 4], [6, 4], [3, 2], [7, 7], [9, 3]]"
+                                              rows="6"></textarea>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <span>初始输入：</span>
+                                    <input type="text" class="form-control" value="0.0009"
+                                           placeholder="初始输入,default=0.0009">
+                                </div>
+                                <div class="form-group">
+                                    <span>步长：</span>
+                                    <input type="text" class="form-control" value="0.0001"
+                                           placeholder="步长,default=0.0001">
+                                </div>
+                                <div class="form-group">
+                                    <span>迭代次数：</span>
+                                    <input type="text" class="form-control" value="10000"
+                                           placeholder="迭代次数,default=10000">
+                                </div>
+                            </div>
+                            <div class="submit-button">
+                                <button class="btn btn-common" style="float: right;" id="submit-8"
+                                        type="button">
+                                    提交
+                                </button>
+                            </div>
+                        {% elif id == '实验-9' %}
+                        {% elif id == '实验-10' %}
+                        {% elif id == '实验-11' %}
+                        {% elif id == '实验-12' %}
+
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <span>蚂蚁倍数：</span>
+                                    <input type="text" class="form-control" value="5"
+                                           placeholder="初始输入,default=0.0009">
+                                </div>
+                                <div class="form-group">
+                                    <span>信息素启发式因子：</span>
+                                    <input type="text" class="form-control" value="1"
+                                           placeholder="步长,default=0.0001">
+                                </div>
+                                <div class="form-group">
+                                    <span>期望影响因子：</span>
+                                    <input type="text" class="form-control" value="5"
+                                           placeholder="迭代次数,default=10000">
+                                </div>
+                                <div class="form-group">
+                                    <span>信息素的挥发率：</span>
+                                    <input type="text" class="form-control" value="0.2"
+                                           placeholder="迭代次数,default=10000">
+                                </div>
+                                <div class="form-group">
+                                    <span>信息素强度因子：</span>
+                                    <input type="text" class="form-control" value="1"
+                                           placeholder="迭代次数,default=10000">
+                                </div>
+                                <div class="form-group">
+                                    <span>最大迭代次数：</span>
+                                    <input type="text" class="form-control" value="200"
+                                           placeholder="迭代次数,default=10000">
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <span>定义城市坐标：</span>
+                                    <textarea class="form-control" id="map"
+                                              placeholder="默认坐标群为： [[106.54,29.59], [91.11,29.97], [87.68,43.77], [106.27,38.47], [111.65,40.82], [108.33,22.84], [126.63,45.75], [125.35,43.88], [123.38,41.8], [114.48,38.03]]"
+                                              rows="6"></textarea>
+                                </div>
+                            </div>
+                            <div class="submit-button">
+                                <button class="btn btn-common" style="float: right;" id="submit-12"
+                                        type="button">
+                                    提交
+                                </button>
+                            </div>
+
+                        {% elif id == '实验-13' %}
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <span>变量维度：</span>
+                                    <input type="text" class="form-control" value="4"
+                                           placeholder="初始输入,default=0.0009">
+                                </div>
+                                <div class="form-group">
+                                    <span>种群规模：</span>
+                                    <input type="text" class="form-control" value="30"
+                                           placeholder="步长,default=0.0001">
+                                </div>
+                                <div class="form-group">
+                                    <span>迭代次数：</span>
+                                    <input type="text" class="form-control" value="100"
+                                           placeholder="迭代次数,default=10000">
+                                </div>
+                                <div class="form-group">
+                                    <span>变量上界：</span>
+                                    <input type="text" class="form-control" value="600"
+                                           placeholder="迭代次数,default=10000">
+                                </div>
+                                <div class="form-group">
+                                    <span>变量下界：</span>
+                                    <input type="text" class="form-control" value="-600"
+                                           placeholder="迭代次数,default=10000">
+                                </div>
+                            </div>
+                            <div class="submit-button">
+                                <button class="btn btn-common" style="float: right;" id="submit-13"
+                                        type="button">
+                                    提交
+                                </button>
+                            </div>
+                        {% elif id == '实验-14' %}
+
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <span>变量维度：</span>
+                                    <input type="text" class="form-control" value="4"
+                                           placeholder="初始输入,default=0.0009">
+                                </div>
+                                <div class="form-group">
+                                    <span>量子染色体长度：</span>
+                                    <input type="text" class="form-control" value="44"
+                                           placeholder="步长,default=0.0001">
+                                </div>
+                                <div class="form-group">
+                                    <span>迭代次数：</span>
+                                    <input type="text" class="form-control" value="100"
+                                           placeholder="迭代次数,default=10000">
+                                </div>
+                                <div class="form-group">
+                                    <span>种群规模：</span>
+                                    <input type="text" class="form-control" value="50"
+                                           placeholder="迭代次数,default=10000">
+                                </div>
+                                <div class="form-group">
+                                    <span>交叉概率：</span>
+                                    <input type="text" class="form-control" value="0.5"
+                                           placeholder="迭代次数,default=10000">
+                                </div>
+                                <div class="form-group">
+                                    <span>变异概率：</span>
+                                    <input type="text" class="form-control" value="0.05"
+                                           placeholder="迭代次数,default=10000">
+                                </div>
+                                <div class="form-group">
+                                    <span>变量上界：</span>
+                                    <input type="text" class="form-control" value="600"
+                                           placeholder="迭代次数,default=10000">
+                                </div>
+                                <div class="form-group">
+                                    <span>变量下界：</span>
+                                    <input type="text" class="form-control" value="-600"
+                                           placeholder="迭代次数,default=10000">
+                                </div>
+                            </div>
+                            <div class="submit-button">
+                                <button class="btn btn-common" style="float: right;" id="submit-14"
+                                        type="button">
+                                    提交
+                                </button>
+                            </div>
+
+                        {% elif id == '实验-15' %}
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <span>变量维度：</span>
+                                    <input type="text" class="form-control" value="100"
+                                           placeholder="初始输入,default=0.0009">
+                                </div>
+                                <div class="form-group">
+                                    <span>种群规模：</span>
+                                    <input type="text" class="form-control" value="300"
+                                           placeholder="步长,default=0.0001">
+                                </div>
+                                <div class="form-group">
+                                    <span>迭代次数：</span>
+                                    <input type="text" class="form-control" value="100"
+                                           placeholder="迭代次数,default=10000">
+                                </div>
+                                <div class="form-group">
+                                    <span>学习因子：</span>
+                                    <input type="text" class="form-control" value="2"
+                                           placeholder="迭代次数,default=10000">
+                                </div>
+                                <div class="form-group">
+                                    <span>自身权重因子：</span>
+                                    <input type="text" class="form-control" value="0.4"
+                                           placeholder="迭代次数,default=10000">
+                                </div>
+                                <div class="form-group">
+                                    <span>变量上界：</span>
+                                    <input type="text" class="form-control" value="600"
+                                           placeholder="迭代次数,default=10000">
+                                </div>
+                                <div class="form-group">
+                                    <span>变量下界：</span>
+                                    <input type="text" class="form-control" value="-600"
+                                           placeholder="迭代次数,default=10000">
+                                </div>
+                            </div>
+                            <div class="submit-button">
+                                <button class="btn btn-common" style="float: right;" id="submit-15"
+                                        type="button">
+                                    提交
+                                </button>
+                            </div>
+                        {% endif %}
+                        <!--                        <div id="code"></div>-->
+                    </div>
+                </div>
+                <div class="blog-post">
+                    <div class="post-content">
+                        <h3>实验演示</h3>
+                        <video src="{{ vedio_path }}" controls="controls">
+                            您的浏览器不支持 video 标签。
+                        </video>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Blog Section End  -->
+
+<!-- Copyright Section Start -->
+<div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4 col-md-3 col-xs-12">
+                <div class="footer-logo">
+                    <img src="../static/assets/img/img_07.gif" alt="">
+                </div>
+            </div>
+            <div class="col-lg-8 col-md-5 col-xs-12">
+                <p class="float-left">浙江省杭州市下城区潮王路18号 | 邮编 310014 | 查号台 0571-88320114
+                    版权所有 © 浙江工业大学</p>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Copyright Section End -->
+
+<!-- Go to Top Link -->
+<a href="#" class="back-to-top">
+    <i class="lni-arrow-up"></i>
+</a>
+
+<!-- Preloader -->
+<div id="preloader">
+    <div class="loader" id="loader-1"></div>
+</div>
+<!-- End Preloader -->
+
+<!-- loading -->
+<div class="modal fade" id="loading" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" data-backdrop='static'>
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="myModalLabel">提示</h4>
+            </div>
+            <div class="modal-body">
+                请稍候。。。<span id="result"></span>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- 模态框（Modal） -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"
+     style="top: 10%;">
+    <div class="modal-dialog" style="max-width: 50%">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="myModalLabel" style="color: #0b0b0b">
+                    <b>实验结果</b>
+                </h5>
+            </div>
+            <div class="modal-body" style="text-align: left;font-weight: bold; color: #0b0b0b;">
+                <div style="text-align: center">
+                    {% if id == '实验-6' %}
+                        <img id="res" src='../static/assets/img/gp_tsp.png'>
+                    {% elif id == '实验-5' %}
+                        <img id="res" src='../static/assets/img/gp_max.png'>
+                    {% elif id == '实验-15' %}
+                        <img id="res" src='../static/assets/img/gp_max.png'>
+                    {% elif id == '实验-12' %}
+                        <img id="res" src='../static/assets/img/pso_tsp.png'>
+                    {% elif id == '实验-8' %}
+                        <img id="res" src='../static/assets/img/hopfield_tsp.png'>
+                    {% elif id == '实验-13' %}
+                        <img id="res" src='../static/assets/img/qpso.png'>
+                    {% elif id == '实验-14' %}
+                        <img id="res" src='../static/assets/img/qea_run.png'>
+                    {% endif %}
+                </div>
+                <div id="answer" style="white-space: pre-line;font-weight: bold; font-size: 18px;color: #0b0b0b;"></div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal">
+                    关闭
+                </button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal -->
+</div>
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="../static/assets/js/jquery-min.js"></script>
+<script src="../static/assets/js/popper.min.js"></script>
+<script src="../static/assets/js/bootstrap.min.js"></script>
+<script src="../static/assets/js/owl.carousel.min.js"></script>
+<script src="../static/assets/js/jquery.mixitup.js"></script>
+<script src="../static/assets/js/wow.js"></script>
+<script src="../static/assets/js/jquery.nav.js"></script>
+<script src="../static/assets/js/scrolling-nav.js"></script>
+<script src="../static/assets/js/jquery.easing.min.js"></script>
+<script src="../static/assets/js/jquery.counterup.min.js"></script>
+<script src="../static/assets/js/jquery.magnific-popup.min.js"></script>
+<script src="../static/assets/js/jquery.slicknav.js"></script>
+<script src="../static/assets/js/main.js"></script>
+<script src="../static/assets/js/form-validator.min.js"></script>
+<script src="../static/assets/js/contact-form-script.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+<script src="http://cdn.bootcss.com/highlight.js/8.0/highlight.min.js"></script>
+<script>
+    $(function () {
+        $('#submit-12').click(function () {
+            $.ajax({
+                type: "GET",
+                url: "/pso_tsp",
+                data: {},
+                dataType: "json",
+                success: function (data) {
+                    $('#answer').empty();
+                    $('#res').empty();
+                    var html = '<span>' + data.data + '</span>';
+                    $('#answer').html(html);
+                    $('#myModal').modal('show');
+                }
+            });
+        });
+
+
+        $('#submit-15').click(function () {
+            $.ajax({
+                type: "GET",
+                url: "/gp_max",
+                data: {},
+                dataType: "json",
+                success: function (data) {
+                    $('#answer').empty();
+                    $('#res').empty();
+                    var html = '<span>' + data.data + '</span>';
+                    $('#answer').html(html);
+                    $('#myModal').modal('show');
+                }
+            });
+        });
+
+        $('#submit-14').click(function () {
+            $.ajax({
+                type: "GET",
+                url: "/hop_tsp",
+                data: {},
+                dataType: "json",
+                success: function (data) {
+                    $('#answer').empty();
+                    $('#res').empty();
+                    var html = '<span>' + data.data + '</span>';
+                    $('#answer').html(html);
+                    $('#myModal').modal('show');
+                }
+            });
+        });
+
+        $('#submit-13').click(function () {
+            $.ajax({
+                type: "GET",
+                url: "/hop_tsp",
+                data: {},
+                dataType: "json",
+                success: function (data) {
+                    $('#answer').empty();
+                    $('#res').empty();
+                    var html = '<span>' + data.data + '</span>';
+                    $('#answer').html(html);
+                    $('#myModal').modal('show');
+                }
+            });
+        });
+
+        $('#submit-8').click(function () {
+            $.ajax({
+                type: "GET",
+                url: "/hop_tsp",
+                data: {},
+                dataType: "json",
+                success: function (data) {
+                    $('#answer').empty();
+                    $('#res').empty();
+                    var html = '<span>' + data.data + '</span>';
+                    $('#answer').html(html);
+                    $('#myModal').modal('show');
+                }
+            });
+        });
+        $('#submit-6').click(function () {
+            $.ajax({
+                type: "GET",
+                url: "/gp_tsp",
+                data: {},
+                dataType: "json",
+                success: function (data) {
+                    $('#answer').empty();
+                    $('#res').empty();
+                    var html = '<span>' + data.data + '</span>';
+                    $('#answer').html(html);
+                    $('#myModal').modal('show');
+                }
+            });
+        });
+
+        $('#submit-5').click(function () {
+            $.ajax({
+                type: "GET",
+                url: "/gp_max",
+                data: {},
+                dataType: "json",
+                success: function (data) {
+                    $('#answer').empty();
+                    var html = '<span>' + data.data + '</span>';
+                    $('#answer').html(html);
+                    $('#myModal').modal('show');
+                }
+            });
+        });
+
+        $('#submit-1').click(function () {
+            $.ajax({
+                type: "GET",
+                url: "/chanshengshi",
+                data: {data: $("#data").val()},
+                dataType: "json",
+                success: function (data) {
+                    $('#answer').empty();
+                    var html = '<span>' + data.data + '</span>';
+                    $('#answer').html(html);
+                    $('#myModal').modal('show');
+                }
+            });
+        });
+        $('#submit-2').click(function () {
+            $.ajax({
+                type: "GET",
+                url: "/xiyiji",
+                data: {sg: $("#sg").val(), gr: $("#gr").val()},
+                dataType: "json",
+                success: function (data) {
+                    $('#answer').empty();
+                    var html = '<span>' + data.data + '</span>';
+                    $('#answer').html(html);
+                    $('#myModal').modal('show');
+                }
+            });
+        });
+        $('#submit-3').click(function () {
+            $.ajax({
+                type: "GET",
+                url: "/bashuma",
+                data: {current: $("#current").val(), target: $("#target").val()},
+                dataType: "json",
+                success: function (data) {
+                    $('#answer').empty();
+                    var html = '<span>' + data.data + '</span>';
+                    $('#answer').html(html);
+                    $('#myModal').modal('show');
+                }
+            });
+        });
+        $('#submit-4').click(function () {
+            $.ajax({
+                type: "GET",
+                url: "/migong",
+                data: {start: $("#start").val(), end: $("#end").val(), map: $("#map").val()},
+                dataType: "json",
+                success: function (data) {
+                    $('#answer').empty();
+                    var html = '<span>' + data.data + '</span>';
+                    $('#answer').html(html);
+                    $('#myModal').modal('show');
+                }
+            });
+        });
+    });
+
+</script>
+<!--<script type="text/javascript">-->
+<!--    var rendererMD = new marked.Renderer();-->
+<!--    marked.setOptions({-->
+<!--        renderer: rendererMD,-->
+<!--        highlight: function (code) {-->
+<!--            return hljs.highlightAuto(code).value;-->
+<!--        },-->
+<!--        gfm: true,-->
+<!--        tables: true,-->
+<!--        breaks: false,-->
+<!--        pedantic: false,-->
+<!--        sanitize: false,-->
+<!--        smartLists: true,-->
+<!--        smartypants: false-->
+<!--    });-->
+<!--    var code_url = '{{ key_code_url|safe }}'-->
+<!--    $.get(code_url, function (response, status, xhr) {-->
+<!--        $("#code").html(marked(response));-->
+<!--    });-->
+<!--</script>-->
+</body>
+
+</html>
