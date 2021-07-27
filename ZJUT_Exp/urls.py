@@ -36,9 +36,6 @@ urlpatterns = [
     path(r'exp_fourteen', views.to_exp_fourteen),
     path(r'exp_fifteen', views.to_exp_fifteen),
     path(r'exp_twenteen', views.to_exp_twenteen),
-    path(r'sign_in', views.sign_in),
-    path(r'sign_up', views.sign_up),
-    path(r'self', views.self),
 
     # operate
     path(r'chanshengshi', operate.chanshengshi),

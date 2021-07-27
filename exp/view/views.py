@@ -5,36 +5,24 @@ from .model.course import Course
 # Create your views here.
 
 def to_index(request):
-    exp_1 = Course('产生式系统实验', '../static/img/exp_1.jpg', '#', 85157)
-    exp_2 = Course('洗衣机模糊推理系统实验', '../static/img/exp_2.jpg', '#', 85157)
-    exp_3 = Course('A*算法求解八数码问题', '../static/img/exp_3.jpg', '#', 85157)
-    exp_4 = Course('A*算法求解迷宫寻路问题实验', '../static/img/exp_4.jpg', '#', 85157)
-    exp_5 = Course('遗传算法求函数最大值实验', '../static/img/exp_5.jpg', '#', 85157)
-    exp_6 = Course('遗传算法求TSP问题实验', '../static/img/exp_6.jpg', '#', 85157)
-    exp_7 = Course('蚁群算法求解最短路径实验', '../static/img/exp_7.jpg', '#', 85157)
-    exp_8 = Course('量子粒子群算法求函数最优解', '../static/img/exp_8.jpg', '#', 85157)
-    exp_9 = Course('量子进化算法求函数最优解', '../static/img/exp_9.jpg', '#', 85157)
+    exp_1 = Course('产生式系统实验', '../static/img/exp_1.jpg', '/exp_one', 85157)
+    exp_2 = Course('洗衣机模糊推理系统实验', '../static/img/exp_2.jpg', '/exp_two', 85157)
+    exp_3 = Course('A*算法求解八数码问题', '../static/img/exp_3.jpg', '/exp_three', 85157)
+    exp_4 = Course('A*算法求解迷宫寻路问题实验', '../static/img/exp_4.jpg', '/exp_four', 85157)
+    exp_5 = Course('遗传算法求函数最大值实验', '../static/img/exp_5.jpg', '/exp_five', 85157)
+    exp_6 = Course('遗传算法求TSP问题实验', '../static/img/exp_6.jpg', '/exp_six', 85157)
+    exp_7 = Course('蚁群算法求解最短路径实验', '../static/img/exp_7.jpg', '/exp_seven', 85157)
+    exp_8 = Course('量子粒子群算法求函数最优解', '../static/img/exp_8.jpg', '/exp_eight', 85157)
+    exp_9 = Course('量子进化算法求函数最优解', '../static/img/exp_9.jpg', '/exp_nine', 85157)
     exp_10 = Course('粒子群算法求函数最小值实验', '../static/img/exp_10.jpg', '#', 85157)
     exp_11 = Course('基于神经网络的优化计算问题', '../static/img/exp_11.jpg', '#', 85157)
-    exp_12 = Course('BP神经网络分类MINST数据集', '../static/img/exp_12.jpg', '#', 85157)
-    exp_13 = Course('采用卷积神经网络分类MINST数据集', '../static/img/exp_13.jpg', '#', 85157)
-    exp_14 = Course('采用胶囊网络分类MINST数据集', '../static/img/exp_14.jpg', '#', 85157)
-    exp_15 = Course('扩展生成对抗网络生成数字图像实验', '../static/img/exp_15.jpg', '#', 85157)
+    exp_12 = Course('BP神经网络分类MINST数据集', '../static/img/exp_12.jpg', '/exp_twenteen', 85157)
+    exp_13 = Course('采用卷积神经网络分类MINST数据集', '../static/img/exp_13.jpg', '/exp_thirteen', 85157)
+    exp_14 = Course('采用胶囊网络分类MINST数据集', '../static/img/exp_14.jpg', '/exp_fourteen', 85157)
+    exp_15 = Course('扩展生成对抗网络生成数字图像实验', '../static/img/exp_15.jpg', '/exp_fifteen', 85157)
     exp_list = [exp_1, exp_2, exp_3, exp_4, exp_5, exp_6, exp_7, exp_8, exp_9, exp_10, exp_11, exp_12, exp_13, exp_14,
                 exp_15]
     return render(request, 'main.html', {'exp_list': exp_list})
-
-
-def sign_up(request):
-    return render(request, 'signup.html')
-
-
-def sign_in(request):
-    return render(request, 'signin.html')
-
-
-def self(request):
-    return render(request, 'self_mes.html')
 
 
 def to_exp_twenteen(request):
@@ -53,7 +41,7 @@ def to_exp_twenteen(request):
     vedio_path = "../static/vedio/exp_4.mp4"
     exp_dict = {'id': id, 'title': title, 'aim': aim, 'content': content, 'exp_request': exp_request,
                 'exp_report': exp_report, 'vedio_path': vedio_path, 'key_code_url': key_code_url}
-    return render(request, 'exp.html', exp_dict)
+    return render(request, 'exp_detail.html', exp_dict)
 
 
 def to_exp_fifteen(request):
@@ -75,7 +63,7 @@ def to_exp_fifteen(request):
     vedio_path = "../static/vedio/exp_4.mp4"
     exp_dict = {'id': id, 'title': title, 'aim': aim, 'content': content, 'exp_request': exp_request,
                 'exp_report': exp_report, 'vedio_path': vedio_path, 'key_code_url': key_code_url}
-    return render(request, 'exp.html', exp_dict)
+    return render(request, 'exp_detail.html', exp_dict)
 
 
 def to_exp_fourteen(request):
@@ -93,7 +81,7 @@ def to_exp_fourteen(request):
     vedio_path = "../static/vedio/exp_4.mp4"
     exp_dict = {'id': id, 'title': title, 'aim': aim, 'content': content, 'exp_request': exp_request,
                 'exp_report': exp_report, 'vedio_path': vedio_path, 'key_code_url': key_code_url}
-    return render(request, 'exp.html', exp_dict)
+    return render(request, 'exp_detail.html', exp_dict)
 
 
 def to_exp_thirteen(request):
@@ -111,7 +99,7 @@ def to_exp_thirteen(request):
     vedio_path = "../static/vedio/exp_4.mp4"
     exp_dict = {'id': id, 'title': title, 'aim': aim, 'content': content, 'exp_request': exp_request,
                 'exp_report': exp_report, 'vedio_path': vedio_path, 'key_code_url': key_code_url}
-    return render(request, 'exp.html', exp_dict)
+    return render(request, 'exp_detail.html', exp_dict)
 
 
 def to_exp_nine(request):
@@ -131,7 +119,7 @@ def to_exp_nine(request):
     vedio_path = "../static/vedio/exp_4.mp4"
     exp_dict = {'id': id, 'title': title, 'aim': aim, 'content': content, 'exp_request': exp_request,
                 'exp_report': exp_report, 'vedio_path': vedio_path, 'key_code_url': key_code_url}
-    return render(request, 'exp.html', exp_dict)
+    return render(request, 'exp_detail.html', exp_dict)
 
 
 def to_exp_eight(request):
@@ -150,7 +138,7 @@ def to_exp_eight(request):
     vedio_path = "../static/vedio/exp_4.mp4"
     exp_dict = {'id': id, 'title': title, 'aim': aim, 'content': content, 'exp_request': exp_request,
                 'exp_report': exp_report, 'vedio_path': vedio_path, 'key_code_url': key_code_url}
-    return render(request, 'exp.html', exp_dict)
+    return render(request, 'exp_detail.html', exp_dict)
 
 
 def to_exp_seven(request):
@@ -167,7 +155,7 @@ def to_exp_seven(request):
     vedio_path = "../static/vedio/exp_4.mp4"
     exp_dict = {'id': id, 'title': title, 'aim': aim, 'content': content, 'exp_request': exp_request,
                 'exp_report': exp_report, 'vedio_path': vedio_path, 'key_code_url': key_code_url}
-    return render(request, 'exp.html', exp_dict)
+    return render(request, 'exp_detail.html', exp_dict)
 
 
 def to_exp_six(request):
@@ -188,7 +176,7 @@ def to_exp_six(request):
     vedio_path = "../static/vedio/exp_4.mp4"
     exp_dict = {'id': id, 'title': title, 'aim': aim, 'content': content, 'exp_request': exp_request,
                 'exp_report': exp_report, 'vedio_path': vedio_path, 'key_code_url': key_code_url}
-    return render(request, 'exp.html', exp_dict)
+    return render(request, 'exp_detail.html', exp_dict)
 
 
 def to_exp_five(request):
@@ -212,7 +200,7 @@ def to_exp_five(request):
     vedio_path = "../static/vedio/exp_4.mp4"
     exp_dict = {'id': id, 'title': title, 'aim': aim, 'content': content, 'exp_request': exp_request,
                 'exp_report': exp_report, 'vedio_path': vedio_path, 'key_code_url': key_code_url}
-    return render(request, 'exp.html', exp_dict)
+    return render(request, 'exp_detail.html', exp_dict)
 
 
 def to_exp_one(request):
@@ -231,7 +219,7 @@ def to_exp_one(request):
     vedio_path = "../static/vedio/exp_4.mp4"
     exp_dict = {'id': id, 'title': title, 'aim': aim, 'content': content, 'exp_request': exp_request,
                 'exp_report': exp_report, 'vedio_path': vedio_path, 'key_code_url': key_code_url}
-    return render(request, 'exp.html', exp_dict)
+    return render(request, 'exp_detail.html', exp_dict)
 
 
 def to_exp_two(request):
@@ -250,7 +238,7 @@ def to_exp_two(request):
     vedio_path = "../static/vedio/exp_4.mp4"
     exp_dict = {'id': id, 'title': title, 'aim': aim, 'content': content, 'exp_request': exp_request,
                 'exp_report': exp_report, 'vedio_path': vedio_path, 'key_code_url': key_code_url}
-    return render(request, 'exp.html', exp_dict)
+    return render(request, 'exp_detail.html', exp_dict)
 
 
 def to_exp_three(request):
@@ -270,7 +258,7 @@ def to_exp_three(request):
     vedio_path = "../static/vedio/exp_4.mp4"
     exp_dict = {'id': id, 'title': title, 'aim': aim, 'content': content, 'exp_request': exp_request,
                 'exp_report': exp_report, 'vedio_path': vedio_path, 'key_code_url': key_code_url}
-    return render(request, 'exp.html', exp_dict)
+    return render(request, 'exp_detail.html', exp_dict)
 
 
 def to_exp_four(request):
@@ -290,4 +278,4 @@ def to_exp_four(request):
     vedio_path = "../static/vedio/exp_5.mp4"
     exp_dict = {'id': id, 'title': title, 'aim': aim, 'content': content, 'exp_request': exp_request,
                 'exp_report': exp_report, 'vedio_path': vedio_path, 'key_code_url': key_code_url}
-    return render(request, 'exp.html', exp_dict)
+    return render(request, 'exp_detail.html', exp_dict)
