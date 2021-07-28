@@ -1,8 +1,60 @@
 from django.shortcuts import render
 from .model.course import Course
+from django.views.generic import RedirectView
+from django.http import HttpResponse
+import docker
+import sys
+import json
 
 
-# Create your views here.
+
+def post(request):
+    # print(sys.path[0]+"\\userfile\\")
+    # 获取前台传来的值
+    text = request.POST.get('text', '')
+    # 将值写入python文件
+    fo = open('userfile/test.py', 'w+')
+    fo.write(text)
+    fo.close()
+    '''
+    转换路径形式，这里是为了寻找py文件，sys.path[0]的输出是D:\programe\python这样的
+    Docker SDk无法识别这样的路径，所以这边需要转换一下，换成D:/programe/python
+    '''
+    filepath = sys.path[0]
+    filepath = filepath.replace('\\', '/') + '/userfile'
+    # 建立Docker连接
+    client = docker.from_env()
+    # 这是通过管道建立连接
+    # client = docker.Client(base_url='npipe:./pipe/docker_engine',
+    #                        version='1.40',
+    #                        timeout=10)
+    # 创建python容器
+    container = client.containers.run('python:3.6',  # 选择的镜像名称与版本号
+                                      'python test.py',  # 需要执行的命令
+                                      volumes={filepath: {  # py文件所在的目录的绝对路径
+                                          'bind': '/usr/src/myapp',  # Docker挂载的虚拟目录(可以随便写,以/开头)
+                                          'mode': 'rw'  # 操作权限 rw就是读写
+                                      }},
+                                      working_dir='/usr/src/myapp',  # 定义Docker的工作目录和上面在bind中写的一致即可
+                                      detach=True  # 有返回值，返回的是一个容器对象，如果是false就是没用返回值
+                                      )
+    result = container.logs().decode()  # 得到运行结果，container.logs()返回的是字节通过decode()转成字符串
+    # 将结果写入json数据中
+    if result != '':
+        backdata = {
+            'status': 'success',
+            'result': result
+        }
+    else:
+        backdata = {
+            'status': 'fail',
+            'result': result
+        }
+    # 转换数据格式
+    backdata_str = json.dumps(backdata)
+    # 返回值到前台
+    return HttpResponse(backdata_str, content_type='application/json')
+
 
 def to_index(request):
     exp_1 = Course('产生式系统实验', '../static/img/exp_1.jpg', '/exp_one', 85157)
