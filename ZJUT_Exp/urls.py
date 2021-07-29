@@ -16,12 +16,21 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from exp.view import views
+
 from exp.view import operate
 
 urlpatterns = [
     path('admin/', admin.site.urls),
 
+    path(r'login',views.to_login),
+    path(r'logout', views.to_logout),
+
     # page
+    path(r'study', views.to_study),
+    path(r'report', views.to_reports),
+    path(r'question', views.to_question),
+    path(r'report_detail', views.to_report_detail),
+
     path(r'index', views.to_index),
     path(r'exp_six', views.to_exp_six),
     path(r'exp_five', views.to_exp_five),
@@ -36,6 +45,7 @@ urlpatterns = [
     path(r'exp_fourteen', views.to_exp_fourteen),
     path(r'exp_fifteen', views.to_exp_fifteen),
     path(r'exp_twenteen', views.to_exp_twenteen),
+    path(r'download_exp', views.download_exp, name='download_exp'),
 
     # operate
     path(r'chanshengshi', operate.chanshengshi),

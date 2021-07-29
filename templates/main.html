@@ -1,16 +1,12 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 {% load static %}
+{% csrf_token %}
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="author" content="Lei Shi">
-    <meta http-equiv="Cache-Control" content="o-transform">
-    <meta http-equiv="Cache-Control" content="no-siteapp">
     <meta name="csrf-token" content="1483758872##fd2cac389b2b7c009a744bcaecaa41d71592cfe8">
-
-    <title>做实验，学编程</title>
 
     <link rel="stylesheet" href="../static/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="../static/highlight.js/9.8.0/monokai-sublime.min.css">
@@ -65,8 +61,20 @@
 
             </ul>
             <div class="navbar-right btns">
-                <a class="btn btn-default navbar-btn sign-in" data-sign="signin" href="#sign-modal" data-toggle="modal">登录</a>
-                <a class="btn btn-default navbar-btn sign-up" data-sign="signup" href="#sign-modal" data-toggle="modal">注册</a>
+                {% if request.user.is_authenticated %}
+                    <div class="user-avatar ">
+                        <a class="avatar" href="study">
+                            <img src="../../static/img/Linux&c.png">
+                        </a>
+                        <a class="btn btn-default navbar-btn" href="logout" style="margin-left: 10px;border-radius: 10px"
+                           >退出</a>
+                    </div>
+                {% else %}
+                    <a class="btn btn-default navbar-btn sign-in" data-sign="signin" href="#sign-modal"
+                       data-toggle="modal">登录</a>
+                    <a class="btn btn-default navbar-btn sign-up" data-sign="signup" href="#sign-modal"
+                       data-toggle="modal">注册</a>
+                {% endif %}
             </div>
             <form class="navbar-form navbar-right" action="#" method="get" role="search">
                 <div class="form-group">
@@ -93,7 +101,6 @@
                 </div>
 
                 <div class="col-md-5">
-
                     <form action="#" method="post">
                         <div class="form-group">
                             <input class="form-control" name="name" id="name" type="text" placeholder="昵称">
@@ -214,28 +221,6 @@
 </div>
 
 
-<div class="modal fade" id="flash-message" tabindex="-1" role="dialog">
-    <div class="modal-dialog" rolw="document">
-    </div>
-</div>
-<div class="modal fade" id="modal-message" tabindex="-1" role="dialog" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span
-                        class="sr-only">Close</span></button>
-                <h4 class="modal-title">注意</h4>
-            </div>
-            <div class="modal-body">
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-                <button type="button" class="btn btn-primary confirm" data-dismiss="modal">确定</button>
-            </div>
-        </div>
-    </div>
-</div>
-
 
 <div class="modal fade" id="sign-modal" tabindex="-1" role="dialog">
     <div class="modal-dialog modal-sm" role="document">
@@ -253,7 +238,7 @@
                 </ul>
                 <div class="tab-content">
                     <div role="tabpanel" class="tab-pane active" id="signin-form">
-                        <form action="/login" method="post">
+                        <form action="login" method="post">
                             <div class="form-group">
                                 <div class="input-group">
                                     <div class="input-group-addon">
@@ -276,14 +261,14 @@
                                         <input type="text" name="captcha_v" class="form-control" placeholder="请输入验证码">
                                     </div>
                                 </div>
-                                <img class="verify-code" src="" source="img/captcha.gif">
                             </div>
                             <div class="form-group remember-login">
                                 <input name="remember" type="checkbox" value="y"> 下次自动登录
                                 <a class="pull-right" href="reset_password/index.html">忘记密码？</a>
                             </div>
                             <div class="form-group">
-                                <input class="btn btn-primary" name="submit" type="submit" value="进入实验楼">
+{#                                <input class="btn btn-primary" name="submit" type="submit" value="进入实验楼">#}
+                                <a href="login" class="btn btn-primary">进入实验楼</a>
                             </div>
                             <div class="form-group widget-signin">
                                 <span>快速登录</span>
@@ -322,7 +307,6 @@
                                         <input type="text" name="captcha_v" class="form-control" placeholder="请输入验证码">
                                     </div>
                                 </div>
-                                <img class="verify-code" src="" source="../static/img/captcha.gif">
                             </div>
                             <div class="form-group">
                                 <input class="btn btn-primary" name="submit" type="submit" value="注册">

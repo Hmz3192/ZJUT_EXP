@@ -18,18 +18,8 @@
     <style>
     </style>
     <link rel="stylesheet" href="../static/js/libs/marked/katex/katex.min.css">
-    <style>
-        .bootcamp-infobox {
-            margin: 50px 0 0;
-        }
-    </style>
-
-
 </head>
-
 <body>
-
-
 <nav class="navbar navbar-default navbar-fixed-top header">
     <div class="container">
         <div class="navbar-header">p
@@ -58,8 +48,21 @@
 
             </ul>
             <div class="navbar-right btns">
-                <a class="btn btn-default navbar-btn sign-in" data-sign="signin" href="#sign-modal" data-toggle="modal">登录</a>
-                <a class="btn btn-default navbar-btn sign-up" data-sign="signup" href="#sign-modal" data-toggle="modal">注册</a>
+                {% if request.user.is_authenticated %}
+                    <div class="user-avatar ">
+                        <a class="avatar" href="study">
+                            <img src="../../static/img/Linux&c.png">
+                        </a>
+                        <a class="btn btn-default navbar-btn" href="logout"
+                           style="margin-left: 10px;border-radius: 10px"
+                        >退出</a>
+                    </div>
+                {% else %}
+                    <a class="btn btn-default navbar-btn sign-in" data-sign="signin" href="#sign-modal"
+                       data-toggle="modal">登录</a>
+                    <a class="btn btn-default navbar-btn sign-up" data-sign="signup" href="#sign-modal"
+                       data-toggle="modal">注册</a>
+                {% endif %}
             </div>
             <form class="navbar-form navbar-right" action="#" method="get" role="search">
                 <div class="form-group">
@@ -72,14 +75,10 @@
 
 
 <div class="container layout layout-margin-top">
-
     <ol class="breadcrumb">
         <li><a href="#">全部实验</a></li>
-
         <li>
-
             <a href="#">{{ id }}</a>
-
         </li>
         <li class="active">
             <a href="#">
@@ -233,7 +232,8 @@
                                          </div>
                                         </span>
                                         <div class="answer-content markdown-body">
-                                            <textarea style="border:none;height: auto">开始实验后,如图所示,出现这些问题,能帮帮我吗？</textarea>
+                                            <textarea
+                                                    style="border:none;height: auto">开始实验后,如图所示,出现这些问题,能帮帮我吗？</textarea>
                                         </div>
                                         <div>
                                             <span class="create-time">21小时前</span>
@@ -257,7 +257,8 @@
                                          </div>
                                         </span>
                                         <div class="answer-content markdown-body">
-                                            <textarea style="border:none;height: auto">开始实验后,如图所示,出现这些问题,能帮帮我吗？</textarea>
+                                            <textarea
+                                                    style="border:none;height: auto">开始实验后,如图所示,出现这些问题,能帮帮我吗？</textarea>
                                         </div>
                                         <div>
                                             <span class="create-time">21小时前</span>
@@ -507,51 +508,6 @@
         </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->
 </div>
-<div class="modal fade" id="charge-course-modal" tabindex="-1" role="dialog" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
-                <h4 class="modal-title">课程报名</h4>
-            </div>
-            <div class="modal-body">
-                <form class="row form-horizontal">
-                    <input name="_csrf_token" type=hidden value="1483798909##83486291085ca5638aecfa7c17fa13a65c6f2d91">
-                    <div class="form-group">
-                        <label class="col-md-2 control-label">邮箱</label>
-                        <div class="col-md-10">
-                            <input type="email" class="form-control" name="email" value="">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="col-md-2 control-label">手机号码</label>
-                        <div class="col-md-10">
-                            <div class="input-group">
-                                <input type="text" class="form-control" name="phone_no">
-                                <span class="input-group-btn">
-                                    <button class="btn btn-default charge-course-phone-code" type="button"
-                                            style="padding:7px 12px;">获取验证码</button>
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="col-md-2 control-label">验证码</label>
-                        <div class="col-md-10">
-                            <input type="text" class="form-control" name="verify_code">
-                        </div>
-                    </div>
-                </form>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-                <button type="button" class="btn btn-primary charge-course-confirm">确定</button>
-            </div>
-        </div>
-    </div>
-</div>
-
-
 <div class="modal fade" id="sign-modal" tabindex="-1" role="dialog">
     <div class="modal-dialog modal-sm" role="document">
         <div class="modal-content">
@@ -568,7 +524,7 @@
                 </ul>
                 <div class="tab-content">
                     <div role="tabpanel" class="tab-pane active" id="signin-form">
-                        <form action="#" method="post">
+                        <form action="login" method="post">
                             <div class="form-group">
                                 <div class="input-group">
                                     <div class="input-group-addon">
@@ -591,14 +547,13 @@
                                         <input type="text" name="captcha_v" class="form-control" placeholder="请输入验证码">
                                     </div>
                                 </div>
-                                <img class="verify-code" src="" source="img/captcha.gif">
                             </div>
                             <div class="form-group remember-login">
                                 <input name="remember" type="checkbox" value="y"> 下次自动登录
-                                <a class="pull-right" href="../reset_password/index.html">忘记密码？</a>
+                                <a class="pull-right" href="#">忘记密码？</a>
                             </div>
                             <div class="form-group">
-                                <input class="btn btn-primary" name="submit" type="submit" value="进入实验楼">
+                                <a href="login" class="btn btn-primary">进入实验楼</a>
                             </div>
                             <div class="form-group widget-signin">
                                 <span>快速登录</span>
@@ -637,7 +592,6 @@
                                         <input type="text" name="captcha_v" class="form-control" placeholder="请输入验证码">
                                     </div>
                                 </div>
-                                <img class="verify-code" src="" source="../static/img/captcha.gif">
                             </div>
                             <div class="form-group">
                                 <input class="btn btn-primary" name="submit" type="submit" value="注册">

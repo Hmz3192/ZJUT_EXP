@@ -10,7 +10,7 @@ from .exp.test7 import *
 from .exp.hopfield_tsp import *
 from .exp.qpso import *
 from .exp.qea_run import *
-from .exp.ACO import *
+from .exp.aco import *
 
 
 def get_pso_tsp(request):

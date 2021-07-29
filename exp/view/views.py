@@ -1,11 +1,13 @@
-from django.shortcuts import render
+from django.contrib.auth import authenticate, login, logout
+from django.shortcuts import render, redirect
+from django.views.decorators.csrf import csrf_exempt
+
 from .model.course import Course
 from django.views.generic import RedirectView
-from django.http import HttpResponse
+from django.http import HttpResponse, FileResponse, HttpResponseRedirect
 import docker
 import sys
 import json
-
 
 
 def post(request):
@@ -56,6 +58,43 @@ def post(request):
     return HttpResponse(backdata_str, content_type='application/json')
 
 
+def to_login(request):
+    # request.session['current_page'] = request.META.get('HTTP_REFERER', 'index')
+    username = 'Xm'
+    password = 'Xm12345678'
+    user = authenticate(username=username, password=password)
+    if user is not None:
+        if user.is_active:
+            login(request, user)
+            return render(request, 'user/user_info.html')
+        else:
+            return None
+    else:
+        return None
+
+
+def to_logout(request):
+    request.session['current_page'] = request.META.get('HTTP_REFERER', 'index')
+    logout(request)
+    return HttpResponseRedirect('index')
+
+
+def to_study(request):
+    return render(request, 'user/user_info.html')
+
+
+def to_question(request):
+    return render(request, 'user/user_questions.html')
+
+
+def to_reports(request):
+    return render(request, 'user/user_reports.html')
+
+
+def to_report_detail(request):
+    return render(request, 'user/reports_show.html')
+
+
 def to_index(request):
     exp_1 = Course('产生式系统实验', '../static/img/exp_1.jpg', '/exp_one', 85157)
     exp_2 = Course('洗衣机模糊推理系统实验', '../static/img/exp_2.jpg', '/exp_two', 85157)
@@ -77,6 +116,15 @@ def to_index(request):
     return render(request, 'main.html', {'exp_list': exp_list})
 
 
+def download_exp(request):
+    file_path = request.GET.get("file")
+    file = open(file_path, 'rb')
+    response = FileResponse(file)
+    response['Content-Type'] = 'application/octet-stream'
+    response['Content-Disposition'] = 'attachment;filename="exp_code.py"'
+    return response
+
+
 def to_exp_twenteen(request):
     id = "实验-12"
     title = "蚁群算法求解最短路径实验"
@@ -91,8 +139,17 @@ def to_exp_twenteen(request):
                  "\n4.总结实验心得。"
     key_code_url = "../static/exp_code/exp_4.md"
     vedio_path = "../static/vedio/exp_4.mp4"
+    file_path = 'static/exp_res/aco.py'
+    file_code = []
+    with open(file_path, 'r', encoding='utf-8') as file:
+        for line in file.readlines():
+            line = line.replace('\n', '\\n\'')
+            line = '\'' + line
+            file_code.append(line)
+    exp_code = '+'.join(file_code)
     exp_dict = {'id': id, 'title': title, 'aim': aim, 'content': content, 'exp_request': exp_request,
-                'exp_report': exp_report, 'vedio_path': vedio_path, 'key_code_url': key_code_url}
+                'exp_report': exp_report, 'vedio_path': vedio_path, 'key_code_url': key_code_url,
+                'file_code': exp_code, 'file_path': file_path}
     return render(request, 'exp_detail.html', exp_dict)
 
 
@@ -113,8 +170,17 @@ def to_exp_fifteen(request):
                  "\n3、比较分析粒子群局部版本和全局版本的区别。"
     key_code_url = "../static/exp_code/exp_4.md"
     vedio_path = "../static/vedio/exp_4.mp4"
+    file_path = 'static/exp_res/pso_part.py'
+    file_code = []
+    with open(file_path, 'r', encoding='utf-8') as file:
+        for line in file.readlines():
+            line = line.replace('\n', '\\n\'')
+            line = '\'' + line
+            file_code.append(line)
+    exp_code = '+'.join(file_code)
     exp_dict = {'id': id, 'title': title, 'aim': aim, 'content': content, 'exp_request': exp_request,
-                'exp_report': exp_report, 'vedio_path': vedio_path, 'key_code_url': key_code_url}
+                'exp_report': exp_report, 'vedio_path': vedio_path, 'key_code_url': key_code_url,
+                'file_code': exp_code, 'file_path': file_path}
     return render(request, 'exp_detail.html', exp_dict)
 
 
@@ -131,8 +197,17 @@ def to_exp_fourteen(request):
                  "\n4.总结实验心得体会"
     key_code_url = "../static/exp_code/exp_4.md"
     vedio_path = "../static/vedio/exp_4.mp4"
+    file_path = 'static/exp_res/qpso.py'
+    file_code = []
+    with open(file_path, 'r', encoding='utf-8') as file:
+        for line in file.readlines():
+            line = line.replace('\n', '\\n\'')
+            line = '\'' + line
+            file_code.append(line)
+    exp_code = '+'.join(file_code)
     exp_dict = {'id': id, 'title': title, 'aim': aim, 'content': content, 'exp_request': exp_request,
-                'exp_report': exp_report, 'vedio_path': vedio_path, 'key_code_url': key_code_url}
+                'exp_report': exp_report, 'vedio_path': vedio_path, 'key_code_url': key_code_url,
+                'file_code': exp_code, 'file_path': file_path}
     return render(request, 'exp_detail.html', exp_dict)
 
 
@@ -149,8 +224,17 @@ def to_exp_thirteen(request):
                  "\n4.总结实验心得体会"
     key_code_url = "../static/exp_code/exp_4.md"
     vedio_path = "../static/vedio/exp_4.mp4"
+    file_path = 'static/exp_res/qea_run.py'
+    file_code = []
+    with open(file_path, 'r', encoding='utf-8') as file:
+        for line in file.readlines():
+            line = line.replace('\n', '\\n\'')
+            line = '\'' + line
+            file_code.append(line)
+    exp_code = '+'.join(file_code)
     exp_dict = {'id': id, 'title': title, 'aim': aim, 'content': content, 'exp_request': exp_request,
-                'exp_report': exp_report, 'vedio_path': vedio_path, 'key_code_url': key_code_url}
+                'exp_report': exp_report, 'vedio_path': vedio_path, 'key_code_url': key_code_url,
+                'file_code': exp_code, 'file_path': file_path}
     return render(request, 'exp_detail.html', exp_dict)
 
 
@@ -169,8 +253,17 @@ def to_exp_nine(request):
                  "\n4. 总结实验心得体会。"
     key_code_url = "../static/exp_code/exp_4.md"
     vedio_path = "../static/vedio/exp_4.mp4"
+    file_path = 'static/exp_res/fuccy_wash.py'
+    file_code = []
+    with open(file_path, 'r', encoding='utf-8') as file:
+        for line in file.readlines():
+            line = line.replace('\n', '\\n\'')
+            line = '\'' + line
+            file_code.append(line)
+    exp_code = '+'.join(file_code)
     exp_dict = {'id': id, 'title': title, 'aim': aim, 'content': content, 'exp_request': exp_request,
-                'exp_report': exp_report, 'vedio_path': vedio_path, 'key_code_url': key_code_url}
+                'exp_report': exp_report, 'vedio_path': vedio_path, 'key_code_url': key_code_url,
+                'file_code': exp_code, 'file_path': file_path}
     return render(request, 'exp_detail.html', exp_dict)
 
 
@@ -188,8 +281,17 @@ def to_exp_eight(request):
                  "\n5.总结实验心得和体会"
     key_code_url = "../static/exp_code/exp_4.md"
     vedio_path = "../static/vedio/exp_4.mp4"
+    file_path = 'static/exp_res/hopfield_tsp.py'
+    file_code = []
+    with open(file_path, 'r', encoding='utf-8') as file:
+        for line in file.readlines():
+            line = line.replace('\n', '\\n\'')
+            line = '\'' + line
+            file_code.append(line)
+    exp_code = '+'.join(file_code)
     exp_dict = {'id': id, 'title': title, 'aim': aim, 'content': content, 'exp_request': exp_request,
-                'exp_report': exp_report, 'vedio_path': vedio_path, 'key_code_url': key_code_url}
+                'exp_report': exp_report, 'vedio_path': vedio_path, 'key_code_url': key_code_url,
+                'file_code': exp_code, 'file_path': file_path}
     return render(request, 'exp_detail.html', exp_dict)
 
 
@@ -204,9 +306,18 @@ def to_exp_seven(request):
                  "\n2. 分析隐藏层的层数对网络的影响。" \
                  "\n3. 总结实验心得体会。"
     key_code_url = "../static/exp_code/exp_4.md"
-    vedio_path = "../static/vedio/exp_4.mp4"
+    vedio_path = "../static/vedio/test7.mp4"
+    file_path = 'static/exp_res/fuccy_wash.py'
+    file_code = []
+    with open(file_path, 'r', encoding='utf-8') as file:
+        for line in file.readlines():
+            line = line.replace('\n', '\\n\'')
+            line = '\'' + line
+            file_code.append(line)
+    exp_code = '+'.join(file_code)
     exp_dict = {'id': id, 'title': title, 'aim': aim, 'content': content, 'exp_request': exp_request,
-                'exp_report': exp_report, 'vedio_path': vedio_path, 'key_code_url': key_code_url}
+                'exp_report': exp_report, 'vedio_path': vedio_path, 'key_code_url': key_code_url,
+                'file_code': exp_code, 'file_path': file_path}
     return render(request, 'exp_detail.html', exp_dict)
 
 
@@ -226,8 +337,17 @@ def to_exp_six(request):
                  "\n6.总结实验心得体会。"
     key_code_url = "../static/exp_code/exp_4.md"
     vedio_path = "../static/vedio/exp_4.mp4"
+    file_path = 'static/exp_res/test7.py'
+    file_code = []
+    with open(file_path, 'r', encoding='utf-8') as file:
+        for line in file.readlines():
+            line = line.replace('\n', '\\n\'')
+            line = '\'' + line
+            file_code.append(line)
+    exp_code = '+'.join(file_code)
     exp_dict = {'id': id, 'title': title, 'aim': aim, 'content': content, 'exp_request': exp_request,
-                'exp_report': exp_report, 'vedio_path': vedio_path, 'key_code_url': key_code_url}
+                'exp_report': exp_report, 'vedio_path': vedio_path, 'key_code_url': key_code_url,
+                'file_code': exp_code, 'file_path': file_path}
     return render(request, 'exp_detail.html', exp_dict)
 
 
@@ -250,8 +370,17 @@ def to_exp_five(request):
                  "\n4.总结实验心得体会。"
     key_code_url = "../static/exp_code/exp_4.md"
     vedio_path = "../static/vedio/exp_4.mp4"
+    file_path = 'static/exp_res/ga_max.py'
+    file_code = []
+    with open(file_path, 'r', encoding='utf-8') as file:
+        for line in file.readlines():
+            line = line.replace('\n', '\\n\'')
+            line = '\'' + line
+            file_code.append(line)
+    exp_code = '+'.join(file_code)
     exp_dict = {'id': id, 'title': title, 'aim': aim, 'content': content, 'exp_request': exp_request,
-                'exp_report': exp_report, 'vedio_path': vedio_path, 'key_code_url': key_code_url}
+                'exp_report': exp_report, 'vedio_path': vedio_path, 'key_code_url': key_code_url,
+                'file_code': exp_code, 'file_path': file_path}
     return render(request, 'exp_detail.html', exp_dict)
 
 
@@ -269,8 +398,17 @@ def to_exp_one(request):
                  "\n5.总结实验心得和体会"
     key_code_url = "../static/exp_code/exp_4.md"
     vedio_path = "../static/vedio/exp_4.mp4"
+    file_path = 'static/exp_res/css.py'
+    file_code = []
+    with open(file_path, 'r', encoding='utf-8') as file:
+        for line in file.readlines():
+            line = line.replace('\n', '\\n\'')
+            line = '\'' + line
+            file_code.append(line)
+    exp_code = '+'.join(file_code)
     exp_dict = {'id': id, 'title': title, 'aim': aim, 'content': content, 'exp_request': exp_request,
-                'exp_report': exp_report, 'vedio_path': vedio_path, 'key_code_url': key_code_url}
+                'exp_report': exp_report, 'vedio_path': vedio_path, 'key_code_url': key_code_url,
+                'file_code': exp_code, 'file_path': file_path}
     return render(request, 'exp_detail.html', exp_dict)
 
 
@@ -288,8 +426,17 @@ def to_exp_two(request):
                  "\n4.通过最大隶属度函数来计算模糊控制输出的量化值。"
     key_code_url = "../static/exp_code/exp_4.md"
     vedio_path = "../static/vedio/exp_4.mp4"
+    file_path = 'static/exp_res/fuccy_wash.py'
+    file_code = []
+    with open(file_path, 'r', encoding='utf-8') as file:
+        for line in file.readlines():
+            line = line.replace('\n', '\\n\'')
+            line = '\'' + line
+            file_code.append(line)
+    exp_code = '+'.join(file_code)
     exp_dict = {'id': id, 'title': title, 'aim': aim, 'content': content, 'exp_request': exp_request,
-                'exp_report': exp_report, 'vedio_path': vedio_path, 'key_code_url': key_code_url}
+                'exp_report': exp_report, 'vedio_path': vedio_path, 'key_code_url': key_code_url,
+                'file_code': exp_code, 'file_path': file_path}
     return render(request, 'exp_detail.html', exp_dict)
 
 
@@ -308,8 +455,17 @@ def to_exp_three(request):
                  "\n5. 总结实验心得体会。"
     key_code_url = "../static/exp_code/exp_4.md"
     vedio_path = "../static/vedio/exp_4.mp4"
+    file_path = 'static/exp_res/test4.py'
+    file_code = []
+    with open(file_path, 'r', encoding='utf-8') as file:
+        for line in file.readlines():
+            line = line.replace('\n', '\\n\'')
+            line = '\'' + line
+            file_code.append(line)
+    exp_code = '+'.join(file_code)
     exp_dict = {'id': id, 'title': title, 'aim': aim, 'content': content, 'exp_request': exp_request,
-                'exp_report': exp_report, 'vedio_path': vedio_path, 'key_code_url': key_code_url}
+                'exp_report': exp_report, 'vedio_path': vedio_path, 'key_code_url': key_code_url,
+                'file_code': exp_code, 'file_path': file_path}
     return render(request, 'exp_detail.html', exp_dict)
 
 
@@ -328,6 +484,15 @@ def to_exp_four(request):
                  "\n5. 总结实验心得体会。"
     key_code_url = "../static/exp_code/exp_5.md"
     vedio_path = "../static/vedio/exp_5.mp4"
+    file_path = 'static/exp_res/test5.py'
+    file_code = []
+    with open(file_path, 'r', encoding='utf-8') as file:
+        for line in file.readlines():
+            line = line.replace('\n', '\\n\'')
+            line = '\'' + line
+            file_code.append(line)
+    exp_code = '+'.join(file_code)
     exp_dict = {'id': id, 'title': title, 'aim': aim, 'content': content, 'exp_request': exp_request,
-                'exp_report': exp_report, 'vedio_path': vedio_path, 'key_code_url': key_code_url}
+                'exp_report': exp_report, 'vedio_path': vedio_path, 'key_code_url': key_code_url,
+                'file_code': exp_code, 'file_path': file_path}
     return render(request, 'exp_detail.html', exp_dict)
