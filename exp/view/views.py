@@ -83,16 +83,21 @@ def to_study(request):
     return render(request, 'user/user_info.html')
 
 
-def to_question(request):
-    return render(request, 'user/user_questions.html')
-
-
-def to_reports(request):
-    return render(request, 'user/user_reports.html')
-
-
 def to_report_detail(request):
-    return render(request, 'user/reports_show.html')
+    id = "实验-12"
+    title = "蚁群算法求解最短路径实验"
+    aim = "熟悉和掌握蚁群算法的原理、流程和算法模型，并利用蚁群算法求解最短路径问题，理解求解流程并测试主要参数对结果的影响。"
+    content = "编写基于蚁群算法求解TSP问题的程序，算出20个城市和50个城市之间的最短距离。"
+    exp_request = "1.编写基于蚁群算法求解TSP问题的程序，给出20个城市的坐标信息，求解最短路径；将输入数据换为50个城市的坐标，求解最短路径。" \
+                  "\n2.对于同一个TSP问题，设置不同的参数（信息素启发式因子α，期望启发式因子β，信息素残留常数ρ，蚁群规模等），分析不同的参数对蚁群算法的影响。" \
+                  "\n3.讨论三种不同的模型，分析哪种模型的效果最佳。"
+    exp_report = "1.画出蚁群算法求解TSP问题的流程图。" \
+                 "\n2.针对同一个TSP问题，分析不同的参数对于蚁群算法效果的影响。" \
+                 "\n3.分析蚁群算法和遗传算法的区别与联系，优缺点。" \
+                 "\n4.总结实验心得。"
+    exp_dict = {'id': id, 'title': title, 'aim': aim, 'content': content, 'exp_request': exp_request,
+                'exp_report': exp_report}
+    return render(request, 'user/reports_show.html', exp_dict)
 
 
 def to_index(request):
@@ -150,7 +155,11 @@ def to_exp_twenteen(request):
     exp_dict = {'id': id, 'title': title, 'aim': aim, 'content': content, 'exp_request': exp_request,
                 'exp_report': exp_report, 'vedio_path': vedio_path, 'key_code_url': key_code_url,
                 'file_code': exp_code, 'file_path': file_path}
-    return render(request, 'exp_detail.html', exp_dict)
+    last_page = request.META.get('HTTP_REFERER', 'index')
+    if last_page == 'http://localhost:8000/' or last_page == 'http://localhost:8000/index':
+        return render(request, 'course_detail.html', exp_dict)
+    else:
+        return render(request, 'exp_detail.html', exp_dict)
 
 
 def to_exp_fifteen(request):
@@ -181,7 +190,11 @@ def to_exp_fifteen(request):
     exp_dict = {'id': id, 'title': title, 'aim': aim, 'content': content, 'exp_request': exp_request,
                 'exp_report': exp_report, 'vedio_path': vedio_path, 'key_code_url': key_code_url,
                 'file_code': exp_code, 'file_path': file_path}
-    return render(request, 'exp_detail.html', exp_dict)
+    last_page = request.META.get('HTTP_REFERER', 'index')
+    if last_page == 'http://localhost:8000/' or last_page == 'http://localhost:8000/index':
+        return render(request, 'course_detail.html', exp_dict)
+    else:
+        return render(request, 'exp_detail.html', exp_dict)
 
 
 def to_exp_fourteen(request):
@@ -208,7 +221,11 @@ def to_exp_fourteen(request):
     exp_dict = {'id': id, 'title': title, 'aim': aim, 'content': content, 'exp_request': exp_request,
                 'exp_report': exp_report, 'vedio_path': vedio_path, 'key_code_url': key_code_url,
                 'file_code': exp_code, 'file_path': file_path}
-    return render(request, 'exp_detail.html', exp_dict)
+    last_page = request.META.get('HTTP_REFERER', 'index')
+    if last_page == 'http://localhost:8000/' or last_page == 'http://localhost:8000/index':
+        return render(request, 'course_detail.html', exp_dict)
+    else:
+        return render(request, 'exp_detail.html', exp_dict)
 
 
 def to_exp_thirteen(request):
@@ -235,7 +252,11 @@ def to_exp_thirteen(request):
     exp_dict = {'id': id, 'title': title, 'aim': aim, 'content': content, 'exp_request': exp_request,
                 'exp_report': exp_report, 'vedio_path': vedio_path, 'key_code_url': key_code_url,
                 'file_code': exp_code, 'file_path': file_path}
-    return render(request, 'exp_detail.html', exp_dict)
+    last_page = request.META.get('HTTP_REFERER', 'index')
+    if last_page == 'http://localhost:8000/' or last_page == 'http://localhost:8000/index':
+        return render(request, 'course_detail.html', exp_dict)
+    else:
+        return render(request, 'exp_detail.html', exp_dict)
 
 
 def to_exp_nine(request):
@@ -264,7 +285,11 @@ def to_exp_nine(request):
     exp_dict = {'id': id, 'title': title, 'aim': aim, 'content': content, 'exp_request': exp_request,
                 'exp_report': exp_report, 'vedio_path': vedio_path, 'key_code_url': key_code_url,
                 'file_code': exp_code, 'file_path': file_path}
-    return render(request, 'exp_detail.html', exp_dict)
+    last_page = request.META.get('HTTP_REFERER', 'index')
+    if last_page == 'http://localhost:8000/' or last_page == 'http://localhost:8000/index':
+        return render(request, 'course_detail.html', exp_dict)
+    else:
+        return render(request, 'exp_detail.html', exp_dict)
 
 
 def to_exp_eight(request):
@@ -292,7 +317,11 @@ def to_exp_eight(request):
     exp_dict = {'id': id, 'title': title, 'aim': aim, 'content': content, 'exp_request': exp_request,
                 'exp_report': exp_report, 'vedio_path': vedio_path, 'key_code_url': key_code_url,
                 'file_code': exp_code, 'file_path': file_path}
-    return render(request, 'exp_detail.html', exp_dict)
+    last_page = request.META.get('HTTP_REFERER', 'index')
+    if last_page == 'http://localhost:8000/' or last_page == 'http://localhost:8000/index':
+        return render(request, 'course_detail.html', exp_dict)
+    else:
+        return render(request, 'exp_detail.html', exp_dict)
 
 
 def to_exp_seven(request):
@@ -318,7 +347,11 @@ def to_exp_seven(request):
     exp_dict = {'id': id, 'title': title, 'aim': aim, 'content': content, 'exp_request': exp_request,
                 'exp_report': exp_report, 'vedio_path': vedio_path, 'key_code_url': key_code_url,
                 'file_code': exp_code, 'file_path': file_path}
-    return render(request, 'exp_detail.html', exp_dict)
+    last_page = request.META.get('HTTP_REFERER', 'index')
+    if last_page == 'http://localhost:8000/' or last_page == 'http://localhost:8000/index':
+        return render(request, 'course_detail.html', exp_dict)
+    else:
+        return render(request, 'exp_detail.html', exp_dict)
 
 
 def to_exp_six(request):
@@ -348,7 +381,11 @@ def to_exp_six(request):
     exp_dict = {'id': id, 'title': title, 'aim': aim, 'content': content, 'exp_request': exp_request,
                 'exp_report': exp_report, 'vedio_path': vedio_path, 'key_code_url': key_code_url,
                 'file_code': exp_code, 'file_path': file_path}
-    return render(request, 'exp_detail.html', exp_dict)
+    last_page = request.META.get('HTTP_REFERER', 'index')
+    if last_page == 'http://localhost:8000/' or last_page == 'http://localhost:8000/index':
+        return render(request, 'course_detail.html', exp_dict)
+    else:
+        return render(request, 'exp_detail.html', exp_dict)
 
 
 def to_exp_five(request):
@@ -381,7 +418,11 @@ def to_exp_five(request):
     exp_dict = {'id': id, 'title': title, 'aim': aim, 'content': content, 'exp_request': exp_request,
                 'exp_report': exp_report, 'vedio_path': vedio_path, 'key_code_url': key_code_url,
                 'file_code': exp_code, 'file_path': file_path}
-    return render(request, 'exp_detail.html', exp_dict)
+    last_page = request.META.get('HTTP_REFERER', 'index')
+    if last_page == 'http://localhost:8000/' or last_page == 'http://localhost:8000/index':
+        return render(request, 'course_detail.html', exp_dict)
+    else:
+        return render(request, 'exp_detail.html', exp_dict)
 
 
 def to_exp_one(request):
@@ -409,7 +450,11 @@ def to_exp_one(request):
     exp_dict = {'id': id, 'title': title, 'aim': aim, 'content': content, 'exp_request': exp_request,
                 'exp_report': exp_report, 'vedio_path': vedio_path, 'key_code_url': key_code_url,
                 'file_code': exp_code, 'file_path': file_path}
-    return render(request, 'exp_detail.html', exp_dict)
+    last_page = request.META.get('HTTP_REFERER', 'index')
+    if last_page == 'http://localhost:8000/' or last_page == 'http://localhost:8000/index':
+        return render(request, 'course_detail.html', exp_dict)
+    else:
+        return render(request, 'exp_detail.html', exp_dict)
 
 
 def to_exp_two(request):
@@ -437,7 +482,11 @@ def to_exp_two(request):
     exp_dict = {'id': id, 'title': title, 'aim': aim, 'content': content, 'exp_request': exp_request,
                 'exp_report': exp_report, 'vedio_path': vedio_path, 'key_code_url': key_code_url,
                 'file_code': exp_code, 'file_path': file_path}
-    return render(request, 'exp_detail.html', exp_dict)
+    last_page = request.META.get('HTTP_REFERER', 'index')
+    if last_page == 'http://localhost:8000/' or last_page == 'http://localhost:8000/index':
+        return render(request, 'course_detail.html', exp_dict)
+    else:
+        return render(request, 'exp_detail.html', exp_dict)
 
 
 def to_exp_three(request):
@@ -466,7 +515,11 @@ def to_exp_three(request):
     exp_dict = {'id': id, 'title': title, 'aim': aim, 'content': content, 'exp_request': exp_request,
                 'exp_report': exp_report, 'vedio_path': vedio_path, 'key_code_url': key_code_url,
                 'file_code': exp_code, 'file_path': file_path}
-    return render(request, 'exp_detail.html', exp_dict)
+    last_page = request.META.get('HTTP_REFERER', 'index')
+    if last_page == 'http://localhost:8000/' or last_page == 'http://localhost:8000/index':
+        return render(request, 'course_detail.html', exp_dict)
+    else:
+        return render(request, 'exp_detail.html', exp_dict)
 
 
 def to_exp_four(request):
@@ -495,4 +548,8 @@ def to_exp_four(request):
     exp_dict = {'id': id, 'title': title, 'aim': aim, 'content': content, 'exp_request': exp_request,
                 'exp_report': exp_report, 'vedio_path': vedio_path, 'key_code_url': key_code_url,
                 'file_code': exp_code, 'file_path': file_path}
-    return render(request, 'exp_detail.html', exp_dict)
+    last_page = request.META.get('HTTP_REFERER', 'index')
+    if last_page == 'http://localhost:8000/' or last_page == 'http://localhost:8000/index':
+        return render(request, 'course_detail.html', exp_dict)
+    else:
+        return render(request, 'exp_detail.html', exp_dict)
