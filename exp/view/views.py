@@ -131,6 +131,7 @@ def download_exp(request):
 
 
 def to_exp_twenteen(request):
+    request_ip = request.META['HTTP_HOST']
     id = "实验-12"
     title = "蚁群算法求解最短路径实验"
     aim = "熟悉和掌握蚁群算法的原理、流程和算法模型，并利用蚁群算法求解最短路径问题，理解求解流程并测试主要参数对结果的影响。"
@@ -156,13 +157,14 @@ def to_exp_twenteen(request):
                 'exp_report': exp_report, 'vedio_path': vedio_path, 'key_code_url': key_code_url,
                 'file_code': exp_code, 'file_path': file_path}
     last_page = request.META.get('HTTP_REFERER', 'index')
-    if last_page == 'http://localhost:8000/' or last_page == 'http://localhost:8000/index':
+    if last_page == 'http://' + request_ip + '/' or last_page == 'http://' + request_ip + '/index':
         return render(request, 'course_detail.html', exp_dict)
     else:
         return render(request, 'exp_detail.html', exp_dict)
 
 
 def to_exp_fifteen(request):
+    request_ip = request.META['HTTP_HOST']
     id = "实验-15"
     title = "粒子群算法求函数最小值实验"
     aim = "熟悉和掌握粒子群算法的原理、流程，并利用粒子群算法求解函数优化问题，理解求解流程并测试主要参数对实验结果的影响。"
@@ -191,13 +193,14 @@ def to_exp_fifteen(request):
                 'exp_report': exp_report, 'vedio_path': vedio_path, 'key_code_url': key_code_url,
                 'file_code': exp_code, 'file_path': file_path}
     last_page = request.META.get('HTTP_REFERER', 'index')
-    if last_page == 'http://localhost:8000/' or last_page == 'http://localhost:8000/index':
+    if last_page == 'http://' + request_ip + '/' or last_page == 'http://' + request_ip + '/index':
         return render(request, 'course_detail.html', exp_dict)
     else:
         return render(request, 'exp_detail.html', exp_dict)
 
 
 def to_exp_fourteen(request):
+    request_ip = request.META['HTTP_HOST']
     id = "实验-14"
     title = "量子粒子群算法求函数最优解"
     aim = "熟悉和掌握量子粒子群的概念及流程，并利用量子粒子群算法求最优解。理解量子粒子群更新粒子位置的基本理论，包括收缩-扩张因子的定义、粒子位置的计算方法、平均最优位置的计算方法、粒子最优位置的计算方法、量子空间中粒子精确位置的测量方法、全局最优粒子的搜索及更新方法，掌握量子粒子群算法的更新迭代流程。"
@@ -222,13 +225,14 @@ def to_exp_fourteen(request):
                 'exp_report': exp_report, 'vedio_path': vedio_path, 'key_code_url': key_code_url,
                 'file_code': exp_code, 'file_path': file_path}
     last_page = request.META.get('HTTP_REFERER', 'index')
-    if last_page == 'http://localhost:8000/' or last_page == 'http://localhost:8000/index':
+    if last_page == 'http://' + request_ip + '/' or last_page == 'http://' + request_ip + '/index':
         return render(request, 'course_detail.html', exp_dict)
     else:
         return render(request, 'exp_detail.html', exp_dict)
 
 
 def to_exp_thirteen(request):
+    request_ip = request.META['HTTP_HOST']
     id = "实验-13"
     title = "量子进化算法求函数最优解"
     aim = "熟悉和掌握量子粒子群的概念及流程，并利用量子粒子群算法求最优解。理解量子粒子群更新粒子位置的基本理论，包括收缩-扩张因子的定义、粒子位置的计算方法、平均最优位置的计算方法、粒子最优位置的计算方法、量子空间中粒子精确位置的测量方法、全局最优粒子的搜索及更新方法，掌握量子粒子群算法的更新迭代流程。"
@@ -253,13 +257,14 @@ def to_exp_thirteen(request):
                 'exp_report': exp_report, 'vedio_path': vedio_path, 'key_code_url': key_code_url,
                 'file_code': exp_code, 'file_path': file_path}
     last_page = request.META.get('HTTP_REFERER', 'index')
-    if last_page == 'http://localhost:8000/' or last_page == 'http://localhost:8000/index':
+    if last_page == 'http://' + request_ip + '/' or last_page == 'http://' + request_ip + '/index':
         return render(request, 'course_detail.html', exp_dict)
     else:
         return render(request, 'exp_detail.html', exp_dict)
 
 
 def to_exp_nine(request):
+    request_ip = request.META['HTTP_HOST']
     id = "实验-9"
     title = "卷积神经网络分类MINST数据集"
     aim = "熟悉掌握卷积神经网络的定义，了解网络中卷积层、池化层等各层特点，并利用卷积神经网络对MINST数据集进行分类。"
@@ -286,13 +291,14 @@ def to_exp_nine(request):
                 'exp_report': exp_report, 'vedio_path': vedio_path, 'key_code_url': key_code_url,
                 'file_code': exp_code, 'file_path': file_path}
     last_page = request.META.get('HTTP_REFERER', 'index')
-    if last_page == 'http://localhost:8000/' or last_page == 'http://localhost:8000/index':
+    if last_page == 'http://' + request_ip + '/' or last_page == 'http://' + request_ip + '/index':
         return render(request, 'course_detail.html', exp_dict)
     else:
         return render(request, 'exp_detail.html', exp_dict)
 
 
 def to_exp_eight(request):
+    request_ip = request.META['HTTP_HOST']
     id = "实验-8"
     title = "基于神经网络的优化计算问题"
     aim = "掌握连续Hopfield神经网络的结构和运行机制，理解连续Hopfield神经网络用于优化计算的基本原理，掌握连续Hopfield神经网络用于优化计算的一般步骤。"
@@ -318,13 +324,14 @@ def to_exp_eight(request):
                 'exp_report': exp_report, 'vedio_path': vedio_path, 'key_code_url': key_code_url,
                 'file_code': exp_code, 'file_path': file_path}
     last_page = request.META.get('HTTP_REFERER', 'index')
-    if last_page == 'http://localhost:8000/' or last_page == 'http://localhost:8000/index':
+    if last_page == 'http://' + request_ip + '/' or last_page == 'http://' + request_ip + '/index':
         return render(request, 'course_detail.html', exp_dict)
     else:
         return render(request, 'exp_detail.html', exp_dict)
 
 
 def to_exp_seven(request):
+    request_ip = request.META['HTTP_HOST']
     id = "实验-7"
     title = "采用BP神经网络分类MINST数据集实验"
     aim = "熟悉掌握BP神经网络的定义，并利用BP神经网络对MINST数据集进行分类。"
@@ -348,13 +355,14 @@ def to_exp_seven(request):
                 'exp_report': exp_report, 'vedio_path': vedio_path, 'key_code_url': key_code_url,
                 'file_code': exp_code, 'file_path': file_path}
     last_page = request.META.get('HTTP_REFERER', 'index')
-    if last_page == 'http://localhost:8000/' or last_page == 'http://localhost:8000/index':
+    if last_page == 'http://' + request_ip + '/' or last_page == 'http://' + request_ip + '/index':
         return render(request, 'course_detail.html', exp_dict)
     else:
         return render(request, 'exp_detail.html', exp_dict)
 
 
 def to_exp_six(request):
+    request_ip = request.META['HTTP_HOST']
     id = "实验-6"
     title = "遗传算法求TSP问题实验"
     aim = "熟悉和掌握遗传算法的原理、流程和编码策略，理解求解TSP问题的流程并测试主要参数对结果的影响，掌握遗传算法的基本实现方法"
@@ -382,13 +390,14 @@ def to_exp_six(request):
                 'exp_report': exp_report, 'vedio_path': vedio_path, 'key_code_url': key_code_url,
                 'file_code': exp_code, 'file_path': file_path}
     last_page = request.META.get('HTTP_REFERER', 'index')
-    if last_page == 'http://localhost:8000/' or last_page == 'http://localhost:8000/index':
+    if last_page == 'http://' + request_ip + '/' or last_page == 'http://' + request_ip + '/index':
         return render(request, 'course_detail.html', exp_dict)
     else:
         return render(request, 'exp_detail.html', exp_dict)
 
 
 def to_exp_five(request):
+    request_ip = request.META['HTTP_HOST']
     id = "实验-5"
     title = "遗传算法求函数最大值实验"
     aim = "熟悉和掌握遗传算法的原理、流程和编码策略，并利用遗传算法求解函数优化问题，理解求解流程并测试主要参数对结果的影响。"
@@ -419,13 +428,14 @@ def to_exp_five(request):
                 'exp_report': exp_report, 'vedio_path': vedio_path, 'key_code_url': key_code_url,
                 'file_code': exp_code, 'file_path': file_path}
     last_page = request.META.get('HTTP_REFERER', 'index')
-    if last_page == 'http://localhost:8000/' or last_page == 'http://localhost:8000/index':
+    if last_page == 'http://' + request_ip + '/' or last_page == 'http://' + request_ip + '/index':
         return render(request, 'course_detail.html', exp_dict)
     else:
         return render(request, 'exp_detail.html', exp_dict)
 
 
 def to_exp_one(request):
+    request_ip = request.META['HTTP_HOST']
     id = "实验-1"
     title = "产生式系统实验"
     aim = "熟悉一阶谓词和产生式表示法，掌握产生式系统的运行机制，以及基于规则推理的基本方法。"
@@ -451,13 +461,14 @@ def to_exp_one(request):
                 'exp_report': exp_report, 'vedio_path': vedio_path, 'key_code_url': key_code_url,
                 'file_code': exp_code, 'file_path': file_path}
     last_page = request.META.get('HTTP_REFERER', 'index')
-    if last_page == 'http://localhost:8000/' or last_page == 'http://localhost:8000/index':
+    if last_page == 'http://' + request_ip + '/' or last_page == 'http://' + request_ip + '/index':
         return render(request, 'course_detail.html', exp_dict)
     else:
         return render(request, 'exp_detail.html', exp_dict)
 
 
 def to_exp_two(request):
+    request_ip = request.META['HTTP_HOST']
     id = "实验-2"
     title = "洗衣机模糊推理系统实验"
     aim = "理解模糊逻辑推理的原理及特点，熟练应用模糊推理。"
@@ -483,13 +494,14 @@ def to_exp_two(request):
                 'exp_report': exp_report, 'vedio_path': vedio_path, 'key_code_url': key_code_url,
                 'file_code': exp_code, 'file_path': file_path}
     last_page = request.META.get('HTTP_REFERER', 'index')
-    if last_page == 'http://localhost:8000/' or last_page == 'http://localhost:8000/index':
+    if last_page == 'http://' + request_ip + '/' or last_page == 'http://' + request_ip + '/index':
         return render(request, 'course_detail.html', exp_dict)
     else:
         return render(request, 'exp_detail.html', exp_dict)
 
 
 def to_exp_three(request):
+    request_ip = request.META['HTTP_HOST']
     id = "实验-3"
     title = "A*算法求解八数码问题实验"
     aim = "熟悉和掌握启发式搜索的定义、估价函数和算法过程，并利用A*算法求解N数码难题，理解求解流程和搜索顺序。"
@@ -516,13 +528,14 @@ def to_exp_three(request):
                 'exp_report': exp_report, 'vedio_path': vedio_path, 'key_code_url': key_code_url,
                 'file_code': exp_code, 'file_path': file_path}
     last_page = request.META.get('HTTP_REFERER', 'index')
-    if last_page == 'http://localhost:8000/' or last_page == 'http://localhost:8000/index':
+    if last_page == 'http://' + request_ip + '/' or last_page == 'http://' + request_ip + '/index':
         return render(request, 'course_detail.html', exp_dict)
     else:
         return render(request, 'exp_detail.html', exp_dict)
 
 
 def to_exp_four(request):
+    request_ip = request.META['HTTP_HOST']
     id = "实验-4"
     title = "A*算法求解八数码问题实验"
     aim = "熟悉和掌握启发式搜索的定义、估价函数和算法过程，并利用A*算法求解N数码难题，理解求解流程和搜索顺序。"
@@ -549,7 +562,7 @@ def to_exp_four(request):
                 'exp_report': exp_report, 'vedio_path': vedio_path, 'key_code_url': key_code_url,
                 'file_code': exp_code, 'file_path': file_path}
     last_page = request.META.get('HTTP_REFERER', 'index')
-    if last_page == 'http://localhost:8000/' or last_page == 'http://localhost:8000/index':
+    if last_page == 'http://' + request_ip + '/' or last_page == 'http://' + request_ip + '/index':
         return render(request, 'course_detail.html', exp_dict)
     else:
         return render(request, 'exp_detail.html', exp_dict)

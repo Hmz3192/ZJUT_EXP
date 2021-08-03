@@ -85,7 +85,7 @@ def veriation(my_list, size, pm):  # 随机变异
 
 
 def main(num, gen, pm):
-    str = ''
+    str = ""
     start = time.time()
     city_num = 10  # 城市数量
     # 随机生成各个城市点的坐标
@@ -177,7 +177,7 @@ def find_tsp():
     return main(p_num, gen, pm)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     p_num = 200  # 种群个体数量
     gen = 1000  # 进化代数
     pm = 0.1  # 变异率

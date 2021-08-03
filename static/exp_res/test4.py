@@ -5,7 +5,7 @@ import time
 class State:
     def __init__(self, state, directionFlag=None, parent=None, f=0):
         self.state = state
-        self.direction = ['up', 'down', 'right', 'left']
+        self.direction = ["up", "down", "right", "left"]
         if directionFlag:
             self.direction.remove(directionFlag)
         self.parent = parent
@@ -24,7 +24,7 @@ class State:
             for j in range(len(self.state)):
                 str += "{}      ".format(int(self.state[i, j]))
             str += "\n"
-        str += '->->->->->->->->\n'
+        str += "->->->->->->->->\n"
         time.sleep(1)
         return str
 
@@ -64,42 +64,42 @@ class State:
         # 获取0点位置
         x, y = self.getZeroPos()
         # 向左
-        if 'left' in self.direction and y > 0:
+        if "left" in self.direction and y > 0:
             s = self.state.copy()
             tmp = s[x, y - 1]
             s[x, y - 1] = s[x, y]
             s[x, y] = tmp
-            news = State(s, directionFlag='right', parent=self)
+            news = State(s, directionFlag="right", parent=self)
             news.setF(news.getFunctionValue())
             subStates.append(news)
         # 向上
-        if 'up' in self.direction and x > 0:
+        if "up" in self.direction and x > 0:
             # it can move to upper place
             s = self.state.copy()
             tmp = s[x - 1, y]
             s[x - 1, y] = s[x, y]
             s[x, y] = tmp
-            news = State(s, directionFlag='down', parent=self)
+            news = State(s, directionFlag="down", parent=self)
             news.setF(news.getFunctionValue())
             subStates.append(news)
         # 向下
-        if 'down' in self.direction and x < boarder:
+        if "down" in self.direction and x < boarder:
             # it can move to down place
             s = self.state.copy()
             tmp = s[x + 1, y]
             s[x + 1, y] = s[x, y]
             s[x, y] = tmp
-            news = State(s, directionFlag='up', parent=self)
+            news = State(s, directionFlag="up", parent=self)
             news.setF(news.getFunctionValue())
             subStates.append(news)
         # 向右
-        if self.direction.count('right') and y < boarder:
+        if self.direction.count("right") and y < boarder:
             # it can move to right place
             s = self.state.copy()
             tmp = s[x, y + 1]
             s[x, y + 1] = s[x, y]
             s[x, y] = tmp
-            news = State(s, directionFlag='left', parent=self)
+            news = State(s, directionFlag="left", parent=self)
             news.setF(news.getFunctionValue())
             subStates.append(news)
         # 返回F值最小的下一个点
@@ -142,7 +142,7 @@ def getbashuma(input, target):
     State.answer = np.array(target)
     s1 = State(state=originState.state)
     path = s1.solve(originState)
-    str = ''
+    str = ""
     if path:
         for node in path:
             str = node.showInfo(str)
@@ -151,7 +151,7 @@ def getbashuma(input, target):
         return str
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     originState = State(np.array([[1, 2, 3], [4, 5, 6], [7, 0, 8]]))
     State.answer = np.array([[1, 2, 3], [4, 5, 6], [7, 8, 0]])
 

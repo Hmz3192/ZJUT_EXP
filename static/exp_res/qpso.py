@@ -2,13 +2,12 @@ import numpy as np
 from matplotlib import pyplot as plt
 import copy
 
-"""
-D:变量维度
-n：种群规模
-T：迭代次数
-upper_bound:变量上界
-lower_bound:变量下界
-"""
+
+#D:变量维度
+#n：种群规模
+#T：迭代次数
+#upper_bound:变量上界
+#lower_bound:变量下界
 D = 4
 n = 30
 T = 100
@@ -135,14 +134,14 @@ def qpso():
     # 画种群g_best迭代图
     plt.figure()
     plt.plot(G_BEST)
-    plt.xlabel('Iteration')
-    plt.ylabel('Best Fitness')
+    plt.xlabel("Iteration")
+    plt.ylabel("Best Fitness")
     # plt.show()
     str = "{}".format(qpso.g_best.x)
     return
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     t = 0
     # 初始化beta、初始化种群
     # beta称为收缩-扩张因子，用来控制粒子的收敛速度，取值介于（0， 1）之间的随机分布数
@@ -173,6 +172,6 @@ if __name__ == '__main__':
     # 画种群g_best迭代图
     plt.figure()
     plt.plot(G_BEST)
-    plt.xlabel('Iteration')
-    plt.ylabel('Best Fitness')
+    plt.xlabel("Iteration")
+    plt.ylabel("Best Fitness")
     plt.show()

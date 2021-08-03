@@ -1,14 +1,14 @@
-"""
-连续型——Hopfield神经网络求解TSP
-1、初始化权值（A,D,U0）
-2、计算N个城市的距离矩阵dxy
-3、初始化神经网络的输入Uxi和输出Vxi
-4、利用动力微分方程计算：dUxi/dt
-5、由一阶欧拉方法更新计算：Uxi(t+1) = Uxi(t) + dUxi/dt * step
-6、由非线性函数sigmoid更新计算：Vxi(t) = 0.5 * (1 + th(Uxi/U0))
-7、计算能量函数E
-8、检查路径是否合法
-"""
+
+#连续型——Hopfield神经网络求解TSP
+#1、初始化权值（A,D,U0）
+#2、计算N个城市的距离矩阵dxy
+#3、初始化神经网络的输入Uxi和输出Vxi
+#4、利用动力微分方程计算：dUxi/dt
+#5、由一阶欧拉方法更新计算：Uxi(t+1) = Uxi(t) + dUxi/dt * step
+#6、由非线性函数sigmoid更新计算：Vxi(t) = 0.5 * (1 + th(Uxi/U0))
+#7、计算能量函数E
+#8、检查路径是否合法
+
 import numpy as np
 from matplotlib import pyplot as plt
 
@@ -115,17 +115,17 @@ def draw_H_and_E(citys, H_path, energys):
     plt.ylim(0, 7)
     for (from_, to_) in H_path:
         # 绘制城市点,大小为0.2，颜色为红色
-        p1 = plt.Circle(citys[from_], 0.2, color='red')
-        p2 = plt.Circle(citys[to_], 0.2, color='red')
+        p1 = plt.Circle(citys[from_], 0.2, color="red")
+        p2 = plt.Circle(citys[to_], 0.2, color="red")
         ax1.add_patch(p1)
         ax1.add_patch(p2)
-        ax1.plot((citys[from_][0], citys[to_][0]), (citys[from_][1], citys[to_][1]), color='red')
-        ax1.annotate(s=chr(97 + to_), xy=citys[to_], xytext=(-8, -4), textcoords='offset points', fontsize=20)
-    ax1.axis('equal')
+        ax1.plot((citys[from_][0], citys[to_][0]), (citys[from_][1], citys[to_][1]), color="red")
+        ax1.annotate(s=chr(97 + to_), xy=citys[to_], xytext=(-8, -4), textcoords="offset points", fontsize=20)
+    ax1.axis("equal")
     ax1.grid()
     # 绘制能量趋势图
     ax2 = fig.add_subplot(122)
-    ax2.plot(np.arange(0, len(energys), 1), energys, color='red')
+    ax2.plot(np.arange(0, len(energys), 1), energys, color="red")
     # plt.show()
 
 
@@ -150,7 +150,7 @@ def hopfield_tsp():
     best_distance = np.inf  # 最优距离
     best_route = []  # 最优路线
     H_path = []  # 哈密顿回路
-    str = ''
+    str = ""
     # 开始迭代训练网络
     for n in range(num_iter):
         # 利用动态方程计算du
@@ -173,10 +173,10 @@ def hopfield_tsp():
                 # 跟新route
                 best_route = route
                 [H_path.append((route[i], route[i + 1])) for i in range(len(route) - 1)]
-                str += '第{}次迭代找到的次优解距离为：{}，能量为：{}\n'.format(n, best_distance, energys[n])
-                [print(chr(97 + v), end=',' if i < len(best_route) - 1 else '\n') for i, v in enumerate(best_route)]
+                str += "第{}次迭代找到的次优解距离为：{}，能量为：{}\n".format(n, best_distance, energys[n])
+                [print(chr(97 + v), end="," if i < len(best_route) - 1 else "\n") for i, v in enumerate(best_route)]
     if len(H_path) > 0:
         draw_H_and_E(citys, H_path, energys)
         return str
     else:
-        print('没有找到最优解')
+        print("没有找到最优解")

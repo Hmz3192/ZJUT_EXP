@@ -109,7 +109,7 @@ def showInfo(map, path, str):
         for j in range(len(map.state)):
             if Point(i, j) in path:
                 # 正确路径用‘*’表示
-                str += '*  '
+                str += "*  "
             else:
                 str += "{}  ".format(int(map.state[i, j]))
         str += "\n"
@@ -125,27 +125,27 @@ def zhaomigong(start, end):
     wrongTable = []
     state = np.array([[0, 0, 0, 0, 0], [1, 0, 1, 0, 1], [0, 0, 0, 0, 1], [0, 1, 0, 0, 0], [0, 0, 0, 1, 0]])
     # 起点终点
-    start_point = Point(int(start.split(',')[0]), int(start.split(',')[1]))
-    end_point = Point(int(end.split(',')[0]), int(end.split(',')[1]))
-    str = ''
+    start_point = Point(int(start.split(",")[0]), int(start.split(",")[1]))
+    end_point = Point(int(end.split(",")[0]), int(end.split(",")[1]))
+    str = ""
     # 最终路径
     path = [start_point]
     Map = State(state, start_point, end_point)
-    str += 'Initial status:\n'
+    str += "Initial status:\n"
     for i in range(len(Map.state)):
         for j in range(len(Map.state)):
             str += "{}  ".format(int(Map.state[i, j]))
         str += ("\n")
     solve(Map, openTable, closeTable, wrongTable)
     time.sleep(3)
-    str += ('Best Way:\n')
+    str += ("Best Way:\n")
     path = path + closeTable
     str = showInfo(Map, path, str)
     str += "Total steps is {}".format(len(path) - 1)
     return str
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     # openList
     openTable = []
     # closeList
@@ -160,14 +160,14 @@ if __name__ == '__main__':
     # 最终路径
     path = [start_point]
     Map = State(state, Point(0, 0), end_point)
-    print('Initial status:')
+    print("Initial status:")
     for i in range(len(Map.state)):
         for j in range(len(Map.state)):
-            print(Map.state[i, j], end='  ')
+            print(Map.state[i, j], end="  ")
         print("\n")
     solve(Map, openTable, closeTable, wrongTable)
     time.sleep(3)
-    print('Best Way:')
+    print("Best Way:")
     path = path + closeTable
     showInfo(Map, path)
     print("Total steps is %d" % (len(path) - 1))

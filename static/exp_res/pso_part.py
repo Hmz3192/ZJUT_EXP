@@ -6,13 +6,12 @@ import copy
 import random
 import sys
 sys.setrecursionlimit(1000000)
-"""
-D:变量维度
-n：种群规模
-T：迭代次数
-upper_bound:变量上界
-lower_bound:变量下界
-"""
+
+#D:变量维度
+#n：种群规模
+#T：迭代次数
+#upper_bound:变量上界
+#lower_bound:变量下界
 D = 100
 n = 300
 T = 100
@@ -130,7 +129,7 @@ class SwarmPop:
                 self.g_best = copy.deepcopy(self.pop[i])
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     pso = SwarmPop(n)
     pso.initPop()
     pso.g_best = copy.deepcopy(pso.pop[0])
@@ -151,6 +150,6 @@ if __name__ == '__main__':
         MEAN.append(mean / n)
     plt.figure()
     plt.plot(G_BEST,label="G_BEST")
-    plt.plot(MEAN,label='MEAN')
+    plt.plot(MEAN,label="MEAN")
     plt.legend()
     plt.show()

@@ -33,7 +33,7 @@ def decoder(r):
         # 染色体分割
         ri = r[i * m // D:i * m // D + m // D]
         # 二进制转十进制
-        s = ''.join(str(j) for j in ri)
+        s = "".join(str(j) for j in ri)
         # 映射到变量空间
         x[i] = int(s, 2) / scale + lower_bound
     return x
@@ -218,14 +218,14 @@ def qea_run():
         t += 1
 
     # 画best迭代变化图
-    plt.figure('Fitness')
+    plt.figure("Fitness")
     plt.plot(all_fit)
-    plt.xlabel('Iteration')
-    plt.ylabel('Fitness')
+    plt.xlabel("Iteration")
+    plt.ylabel("Fitness")
     # plt.show()
     return ""
 # 主函数
-if __name__ == '__main__':
+if __name__ == "__main__":
     # 初始化种群
     qp = QPop(n, cr, mr)
     qp.initPop()
@@ -244,8 +244,8 @@ if __name__ == '__main__':
         t += 1
 
     # 画best迭代变化图
-    plt.figure('Fitness')
+    plt.figure("Fitness")
     plt.plot(all_fit)
-    plt.xlabel('Iteration')
-    plt.ylabel('Fitness')
+    plt.xlabel("Iteration")
+    plt.ylabel("Fitness")
     plt.show()

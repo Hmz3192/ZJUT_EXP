@@ -58,7 +58,7 @@ def mutation(temp, MUTA_RATE):
 
 
 def print_info(pop):  # 用于输出结果
-    str = ''
+    str = ""
     fitness = getfitness(pop)
     maxfitness = np.argmax(fitness)
     str += "max_fitness:{}".format(fitness[maxfitness])
@@ -76,9 +76,9 @@ def plot_3d(ax):
     Z = F(X, Y)
     ax.plot_surface(X, Y, Z, rstride=1, cstride=1, cmap=cm.coolwarm)
     ax.set_zlim(-20, 100)
-    ax.set_xlabel('x')
-    ax.set_ylabel('y')
-    ax.set_zlabel('z')
+    ax.set_xlabel("x")
+    ax.set_ylabel("y")
+    ax.set_zlabel("z")
     plt.pause(3)
     plt.show()
 
@@ -92,9 +92,9 @@ def find_gp_max():
     pop = np.random.randint(2, size=(POP_SIZE, DNA_SIZE * 2))
     for _ in range(Iterations):  # 迭代N代
         x, y = decodeDNA(pop)
-        if 'sca' in locals():
+        if "sca" in locals():
             sca.remove()
-        # sca = ax.scatter(x, y, F(x, y), c='black', marker='o');
+        # sca = ax.scatter(x, y, F(x, y), c="black", marker="o");
         # plt.show();
         # plt.pause(0.1)
         pop = np.array(crossmuta(pop, CROSS_RATE))
@@ -116,9 +116,9 @@ if __name__ == "__main__":
     pop = np.random.randint(2, size=(POP_SIZE, DNA_SIZE * 2))
     for _ in range(Iterations):  # 迭代N代
         x, y = decodeDNA(pop)
-        if 'sca' in locals():
+        if "sca" in locals():
             sca.remove()
-        sca = ax.scatter(x, y, F(x, y), c='black', marker='o');
+        sca = ax.scatter(x, y, F(x, y), c="black", marker="o");
         plt.show();
         plt.pause(0.1)
         pop = np.array(crossmuta(pop, CROSS_RATE))
