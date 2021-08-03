@@ -79,8 +79,8 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'zjut_exp',
         'USER': 'root',
-        'PASSWORD': 'xQuant2021',
-        'HOST': '127.0.0.1',
+        'PASSWORD': 'Zjut123456',
+        'HOST': '39.106.40.38',
         'PORT': '3306'
     }
 }
