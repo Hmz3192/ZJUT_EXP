@@ -1,5 +1,9 @@
 import numpy as np
 import time
+import logging
+import sys
+
+logging.basicConfig(format="%(message)s", stream=sys.stdout, level=logging.DEBUG)
 
 
 class Point:
@@ -160,14 +164,17 @@ if __name__ == "__main__":
     # 最终路径
     path = [start_point]
     Map = State(state, Point(0, 0), end_point)
-    print("Initial status:")
+    logging.info("Initial status:")
+    res = ""
     for i in range(len(Map.state)):
         for j in range(len(Map.state)):
-            print(Map.state[i, j], end="  ")
-        print("\n")
+            res += ("{}  ".format(Map.state[i, j]))
+        res += ("\n")
+    logging.info(res)
     solve(Map, openTable, closeTable, wrongTable)
     time.sleep(3)
-    print("Best Way:")
+    logging.info("Best Way:")
     path = path + closeTable
-    showInfo(Map, path)
-    print("Total steps is %d" % (len(path) - 1))
+    str = ""
+    logging.info(showInfo(Map, path, str))
+    logging.info("Total steps is %d" % (len(path) - 1))

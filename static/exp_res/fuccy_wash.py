@@ -1,4 +1,9 @@
 import numpy as np
+import logging
+import sys
+
+logging.basicConfig(format="%(message)s", stream=sys.stdout, level=logging.DEBUG)
+
 
 
 def fuccy(sg, gr):
@@ -158,5 +163,11 @@ def fuccy(sg, gr):
         C5[i] = min(inputsludgeandgrease[i], R[i][4])
     C = np.zeros(5)
     C = [max(C1), max(C2), max(C3), max(C4), max(C5)]  # 模糊集合
-    print(C)  # 时间论域有五个，VS,S,M,L,VL.选取最大的作为输入结果。
+    logging.info(C)  # 时间论域有五个，VS,S,M,L,VL.选取最大的作为输入结果。
     return C
+
+
+if __name__ == "__main__":
+    sg = [0.5, 0.83, 0.6]
+    gr = [0.5, 0.71, 0.7]
+    fuccy(sg, gr)

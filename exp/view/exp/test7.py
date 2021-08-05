@@ -165,8 +165,7 @@ def main(num, gen, pm):
     plt.scatter(x, y)  # 画点
     plt.plot(x, y)  # 画点之间的连线
     plt.grid()  # 给画布添加网格
-    # plt.show()
-
+    plt.show()
     return str
 
 

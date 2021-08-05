@@ -1,5 +1,9 @@
 import numpy as np
 import time
+import logging
+import sys
+
+logging.basicConfig(format="%(message)s", stream=sys.stdout, level=logging.DEBUG)
 
 
 class State:
@@ -146,7 +150,7 @@ def getbashuma(input, target):
     if path:
         for node in path:
             str = node.showInfo(str)
-        print(State.answer)
+        logging.info(State.answer)
         str += "Total steps is %d" % len(path)
         return str
 
@@ -157,8 +161,9 @@ if __name__ == "__main__":
 
     s1 = State(state=originState.state)
     path = s1.solve(originState)
+    str = ""
     if path:
         for node in path:
-            node.showInfo()
-        print(State.answer)
-        print("Total steps is %d" % len(path))
+            node.showInfo(str)
+        logging.info(State.answer)
+        logging.info("Total steps is %d" % len(path))

@@ -1,6 +1,10 @@
 import numpy as np
 from matplotlib import pyplot as plt
 import copy
+import logging
+import sys
+
+logging.basicConfig(format="%(message)s", stream=sys.stdout, level=logging.DEBUG)
 
 
 #D:变量维度
@@ -129,8 +133,8 @@ def qpso():
         t += 1
         beta = ((1 - 0.5) * (T - t - 1)) / T + 0.5
 
-    print(qpso.g_best.x)
-    print(qpso.g_best.fit)
+    logging.info(qpso.g_best.x)
+    logging.info(qpso.g_best.fit)
     # 画种群g_best迭代图
     plt.figure()
     plt.plot(G_BEST)
@@ -167,8 +171,8 @@ if __name__ == "__main__":
         t += 1
         beta = ((1 - 0.5) * (T - t - 1)) / T + 0.5
 
-    print(qpso.g_best.x)
-    print(qpso.g_best.fit)
+    logging.info(qpso.g_best.x)
+    logging.info(qpso.g_best.fit)
     # 画种群g_best迭代图
     plt.figure()
     plt.plot(G_BEST)

@@ -1,3 +1,8 @@
+import logging
+import sys
+
+logging.basicConfig(format="%(message)s", stream=sys.stdout, level=logging.DEBUG)
+
 # 动物识别系统
 # 自定义函数，判断有无重复元素
 def judge_repeat(value, list=[]):

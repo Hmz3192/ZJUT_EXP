@@ -22,13 +22,14 @@ from exp.view import operate
 urlpatterns = [
     path('admin/', admin.site.urls),
 
-    path(r'login',views.to_login),
+    path(r'login', views.to_login),
     path(r'logout', views.to_logout),
 
     # page
     path(r'study', views.to_study),
     path(r'report_detail', views.to_report_detail),
 
+    path(r'run_code', views.run_code),
     path(r'index', views.to_index),
     re_path(r'^$', views.to_index),
     path(r'exp_six', views.to_exp_six),

@@ -11,6 +11,10 @@
 
 import numpy as np
 from matplotlib import pyplot as plt
+import logging
+import sys
+
+logging.basicConfig(format="%(message)s", stream=sys.stdout, level=logging.DEBUG)
 
 
 # 代价函数（具有三角不等式性质）
@@ -174,9 +178,9 @@ def hopfield_tsp():
                 best_route = route
                 [H_path.append((route[i], route[i + 1])) for i in range(len(route) - 1)]
                 str += "第{}次迭代找到的次优解距离为：{}，能量为：{}\n".format(n, best_distance, energys[n])
-                [print(chr(97 + v), end="," if i < len(best_route) - 1 else "\n") for i, v in enumerate(best_route)]
+                [logging.info(chr(97 + v), end="," if i < len(best_route) - 1 else "\n") for i, v in enumerate(best_route)]
     if len(H_path) > 0:
         draw_H_and_E(citys, H_path, energys)
         return str
     else:
-        print("没有找到最优解")
+        logging.info("没有找到最优解")

@@ -2,7 +2,10 @@ from matplotlib import pyplot as plt
 import numpy as np
 import pandas as pd
 import time
+import logging
+import sys
 
+logging.basicConfig(format="%(message)s", stream=sys.stdout, level=logging.DEBUG)
 
 def distance_matrix(coordinate_list, size):  # 生成距离矩阵，邻接矩阵
     d = np.zeros((size + 2, size + 2))

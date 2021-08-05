@@ -169,5 +169,6 @@ if __name__ == '__main__':
     time.sleep(3)
     print('Best Way:')
     path = path + closeTable
-    showInfo(Map, path)
+    str = ""
+    showInfo(Map, path, str)
     print("Total steps is %d" % (len(path) - 1))

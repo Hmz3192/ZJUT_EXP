@@ -3,6 +3,10 @@ from numpy.ma import cos
 import matplotlib.pyplot as plt
 from matplotlib import cm
 from mpl_toolkits.mplot3d import Axes3D
+import logging
+import sys
+
+logging.basicConfig(format="%(message)s", stream=sys.stdout, level=logging.DEBUG)
 
 DNA_SIZE = 24  # 编码长度
 POP_SIZE = 200  # 种群大小
@@ -125,6 +129,6 @@ if __name__ == "__main__":
         fitness = getfitness(pop)
         pop = select(pop, fitness)  # 选择生成新的种群
 
-    print_info(pop)
+    logging.info(print_info(pop))
     plt.ioff()
     plot_3d(ax)

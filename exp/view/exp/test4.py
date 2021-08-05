@@ -154,11 +154,11 @@ def getbashuma(input, target):
 if __name__ == '__main__':
     originState = State(np.array([[1, 2, 3], [4, 5, 6], [7, 0, 8]]))
     State.answer = np.array([[1, 2, 3], [4, 5, 6], [7, 8, 0]])
-
+    str = ""
     s1 = State(state=originState.state)
     path = s1.solve(originState)
     if path:
         for node in path:
-            node.showInfo()
+            node.showInfo(str)
         print(State.answer)
         print("Total steps is %d" % len(path))
